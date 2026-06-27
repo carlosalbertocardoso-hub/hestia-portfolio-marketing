@@ -353,7 +353,7 @@ section:not(:last-child) { border-bottom:1px solid var(--border); }
 
 .x-tweet { padding:14px 16px; border-bottom:1px solid #2f3336; }
 .x-tweet-header { display:flex; gap:10px; margin-bottom:8px; }
-.x-av { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#861705,#5a0d04); display:flex; align-items:center; justify-content:justify-content'; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size:12px; font-weight:800; color:#fff; flex-shrink:0; }
+.x-av { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#861705,#5a0d04); display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size:12px; font-weight:800; color:#fff; flex-shrink:0; }
 .x-name { font-family:'Arial',sans-serif; font-size:13px; font-weight:700; color:#fff; }
 .x-handle { font-family:'Arial',sans-serif; font-size:12px; color:#71767b; }
 .x-text { font-family:'Arial',sans-serif; font-size:14px; color:#e7e9ea; line-height:1.5; }
@@ -482,12 +482,203 @@ section:not(:last-child) { border-bottom:1px solid var(--border); }
 .ns-num { font-family:'Inter',sans-serif; font-size:24px; font-weight:900; color:rgba(134,23,5,0.2); line-height:1; margin-bottom:4px; }
 .ns-label { font-family:'Rubik',sans-serif; font-size:11px; font-weight:600; color:#fff; margin-bottom:4px; }
 .ns-desc { font-family:'Roboto',sans-serif; font-size:10px; color:var(--gray2); line-height:1.5; }
+
+/* ══════════════════════════
+   HAMBURGER MENU
+══════════════════════════ */
+.menu-toggle {
+  display:none;
+  position:fixed;
+  top:14px; left:14px;
+  z-index:200;
+  background:var(--dark2);
+  border:1px solid var(--border);
+  width:40px; height:40px;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  cursor:pointer;
+  padding:0;
+}
+.menu-toggle span {
+  display:block;
+  width:18px; height:1.5px;
+  background:var(--white);
+  transition:all 0.2s;
+}
+.menu-toggle.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity:0; }
+.menu-toggle.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+.sidebar-overlay {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:90;
+}
+.sidebar-overlay.active { display:block; }
+
+/* ══════════════════════════
+   RESPONSIVE — TABLET (≤1080px)
+══════════════════════════ */
+@media (max-width:1080px) {
+  .sidebar { width:200px; }
+  .main { margin-left:200px; }
+  section { padding:56px 48px; }
+  #cover { padding:64px 48px; }
+  .cover-title { font-size:52px; }
+  #blog .eyebrow { padding:0 48px; }
+  .blog-article { padding:0 48px; }
+  .x-layout { grid-template-columns:300px 1fr; gap:32px; }
+  .insta-layout { grid-template-columns:240px 1fr; gap:32px; }
+  .phone-frame { width:240px; }
+  .wm-hero h1 { font-size:32px; }
+  .db-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+  .li-img-content { grid-template-columns:repeat(2,1fr); gap:12px; }
+}
+
+/* ══════════════════════════
+   RESPONSIVE — MOBILE (≤768px)
+══════════════════════════ */
+@media (max-width:768px) {
+  /* Sidebar: hidden by default, slides in as overlay */
+  .sidebar {
+    position:fixed;
+    left:-260px;
+    width:240px;
+    transition:left 0.25s ease;
+    z-index:100;
+    height:100%;
+  }
+  .sidebar.open { left:0; }
+
+  /* Hamburger visible */
+  .menu-toggle { display:flex; }
+
+  /* Main: full width */
+  .main { margin-left:0; }
+
+  /* Sections: reduced padding */
+  section { padding:48px 20px; }
+  #cover { padding:72px 20px 48px; }
+  #blog { padding:48px 0; }
+  #blog .eyebrow { padding:0 20px; }
+  .blog-article { padding:0 20px; }
+
+  /* Cover */
+  .cover-title { font-size:38px; }
+  .cover-pre { font-size:9px; }
+  .cover-desc { font-size:14px; }
+  .cover-pills { gap:7px; }
+  .cover-meta { flex-wrap:wrap; gap:16px; }
+
+  /* Section headings */
+  .sec-title { font-size:28px; }
+  .sec-sub { font-size:13px; margin-bottom:28px; }
+
+  /* Eyebrow */
+  .eyebrow { margin-bottom:20px; }
+
+  /* Strategy cards: 1 column */
+  .strategy-row { flex-direction:column; }
+  .strategy-card { min-width:100%; }
+
+  /* Platform intro: stack columns */
+  .pi-grid { grid-template-columns:1fr; gap:16px; }
+
+  /* Instagram: stack phone below posts */
+  .insta-layout { display:flex; flex-direction:column; gap:32px; }
+  .phone-frame { width:100%; max-width:320px; margin:0 auto; position:static; }
+
+  /* Post card: stack visual and meta */
+  .ipc-body { grid-template-columns:1fr; }
+  .ipc-visual { aspect-ratio:1; max-height:280px; }
+
+  /* LinkedIn: allow full width */
+  .li-card { max-width:100%; }
+  .li-img-content { grid-template-columns:repeat(2,1fr); gap:10px; }
+
+  /* X layout: stack */
+  .x-layout { display:flex; flex-direction:column; gap:28px; }
+  .x-frame { width:100%; }
+  .x-card-data { grid-template-columns:repeat(3,1fr); }
+
+  /* Blog */
+  .blog-h { font-size:26px; }
+  .blog-dek { font-size:15px; }
+  .blog-meta { flex-wrap:wrap; gap:8px; }
+  .b-sep { display:none; }
+  .db-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .db-num { font-size:20px; }
+  .zone-tbl { font-size:11px; }
+  .zone-tbl th, .zone-tbl td { padding:7px 8px; }
+  .blog-cta { flex-direction:column; gap:14px; }
+  .blog-cta-btn { text-align:center; }
+
+  /* Email */
+  .email-body { padding:12px 8px; }
+  .em-content { padding:20px 20px; }
+  .em-header { padding:18px 20px; }
+  .em-hero { padding:16px 20px; }
+  .em-footer { padding:14px 20px; }
+  .em-metrics { flex-direction:column; gap:8px; }
+  .em-mc { flex:none; }
+
+  /* Next steps: stack */
+  .ns-grid { grid-template-columns:1fr; gap:20px; }
+
+  /* Web mockup: smaller nav */
+  .wm-links { display:none; }
+  .wm-nav { padding:0 16px; }
+  .wm-hero { padding:32px 16px 28px; }
+  .wm-hero h1 { font-size:26px; }
+  .stats-row { flex-wrap:wrap; }
+  .stat-bl { flex:1 0 40%; min-width:120px; border-right:none; margin-right:0; padding-right:0; border-bottom:1px solid rgba(255,255,255,0.07); padding-bottom:12px; margin-bottom:12px; }
+  .stat-bl:nth-child(odd) { padding-right:16px; }
+  .proj-card { grid-template-columns:1fr; }
+  .proj-img { min-height:120px; }
+  .proj-metrics { grid-template-columns:1fr 1fr; }
+
+  /* Email topbar */
+  .email-topbar { flex-wrap:wrap; height:auto; padding:10px 14px; gap:10px; }
+  .email-subject-bar { font-size:10px; }
+
+  /* X thread card */
+  .x-strategy-card { padding:16px; }
+  .x-thread-preview { gap:0; }
+}
+
+/* ══════════════════════════
+   RESPONSIVE — SMALL (≤480px)
+══════════════════════════ */
+@media (max-width:480px) {
+  section { padding:40px 16px; }
+  #cover { padding:64px 16px 40px; }
+  .cover-title { font-size:30px; }
+  .sec-title { font-size:24px; }
+  #blog .eyebrow { padding:0 16px; }
+  .blog-article { padding:0 16px; }
+  .blog-h { font-size:22px; }
+  .blog-hero-quote { font-size:16px; padding:0 16px; }
+  .db-grid { grid-template-columns:1fr 1fr; }
+  .x-card-data { grid-template-columns:1fr 1fr; }
+  .li-img-content { grid-template-columns:1fr 1fr; }
+  .em-mv { font-size:16px; }
+}
 </style>
 </head>
 <body>
 
+<!-- ── MENU TOGGLE ── -->
+<button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
 <!-- ── SIDEBAR ── -->
-<aside class="sidebar">
+<aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <div class="logo-h">Hestia</div>
     <div class="logo-sub">Portfolio · Marketing Digital</div>
@@ -1240,6 +1431,7 @@ section:not(:last-child) { border-bottom:1px solid var(--border); }
 </main>
 
 <script>
+// Active nav on scroll
 const sections = document.querySelectorAll('section[id]');
 const navItems = document.querySelectorAll('.nav-item');
 const observer = new IntersectionObserver((entries) => {
@@ -1254,6 +1446,34 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.25 });
 sections.forEach(s => observer.observe(s));
+
+// Hamburger menu
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+
+function closeMenu() {
+  menuToggle.classList.remove('open');
+  sidebar.classList.remove('open');
+  overlay.classList.remove('active');
+}
+function openMenu() {
+  menuToggle.classList.add('open');
+  sidebar.classList.add('open');
+  overlay.classList.add('active');
+}
+
+menuToggle.addEventListener('click', () => {
+  sidebar.classList.contains('open') ? closeMenu() : openMenu();
+});
+overlay.addEventListener('click', closeMenu);
+
+// Close sidebar when a nav link is clicked (mobile)
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    if (window.innerWidth <= 768) closeMenu();
+  });
+});
 </script>
 </body>
 </html>
