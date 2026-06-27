@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hestia — Portfolio de Propuestas de Marketing Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Inter:wght@300;400;600;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --dark: #101010;
+  --dark2: #161616;
+  --dark3: #1c1c1c;
+  --dark4: #222222;
+  --red: #861705;
+  --red2: #9C231F;
+  --red-light: #c0382b;
+  --white: #ffffff;
+  --gray: #999999;
+  --gray2: #555555;
+  --gray3: #3a3a3a;
+  --light: #F2F2F2;
+  --light2: #F9F9F9;
+  --border: rgba(255,255,255,0.07);
+  --border-light: rgba(0,0,0,0.1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--white); font-family:'Roboto',sans-serif; display:flex; min-height:100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width:220px; min-height:100vh; background:var(--dark2);
+  border-right:1px solid var(--border); position:fixed; top:0; left:0;
+  display:flex; flex-direction:column; z-index:100; overflow-y:auto;
+}
+.sidebar-logo { padding:28px 24px 20px; border-bottom:1px solid var(--border); }
+.logo-h { font-family:'Inter',sans-serif; font-size:17px; font-weight:800; letter-spacing:0.1em; color:var(--white); text-transform:uppercase; }
+.logo-sub { font-family:'Rubik',sans-serif; font-size:9px; color:var(--gray2); letter-spacing:0.18em; text-transform:uppercase; margin-top:3px; }
+.sidebar-label { font-family:'Rubik',sans-serif; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray3); padding:18px 24px 8px; }
+.nav-item { display:flex; align-items:flex-start; gap:10px; padding:11px 24px; cursor:pointer; text-decoration:none; border-left:2px solid transparent; transition:all 0.18s; }
+.nav-item:hover { background:rgba(134,23,5,0.1); border-left-color:var(--red); }
+.nav-item.active { background:rgba(134,23,5,0.15); border-left-color:var(--red); }
+.nav-num { font-family:'Inter',sans-serif; font-size:9px; font-weight:700; color:var(--red); letter-spacing:0.05em; min-width:18px; padding-top:2px; }
+.nav-text { font-family:'Rubik',sans-serif; font-size:11px; color:var(--gray); line-height:1.5; }
+.nav-item:hover .nav-text, .nav-item.active .nav-text { color:var(--white); }
+.sidebar-footer { margin-top:auto; padding:18px 24px; border-top:1px solid var(--border); }
+.sidebar-footer p { font-family:'Rubik',sans-serif; font-size:9px; color:var(--gray3); line-height:1.7; }
+.sidebar-footer span { color:var(--red); }
+
+/* ── MAIN ── */
+.main { margin-left:220px; flex:1; }
+section { min-height:100vh; padding:64px 72px; position:relative; }
+section:not(:last-child) { border-bottom:1px solid var(--border); }
+
+.eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:36px; }
+.etag { font-family:'Rubik',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--red); background:rgba(134,23,5,0.1); padding:5px 12px; border:1px solid rgba(134,23,5,0.25); flex-shrink:0; }
+.etag.light { background:rgba(134,23,5,0.07); color:var(--red); }
+.eline { flex:1; height:1px; background:var(--border); }
+.eline.dark { background:var(--border-light); }
+
+.sec-title { font-family:'Inter',sans-serif; font-size:38px; font-weight:800; line-height:1.08; letter-spacing:-0.025em; color:var(--white); margin-bottom:10px; }
+.sec-title.dark-text { color:#101010; }
+.sec-sub { font-family:'Roboto',sans-serif; font-weight:300; font-size:15px; color:var(--gray); line-height:1.7; max-width:620px; margin-bottom:44px; }
+.sec-sub.dark-text { color:#555; }
+
+/* ── STRATEGY PILL ── */
+.strategy-row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:44px; }
+.strategy-card { background:var(--dark3); border:1px solid var(--border); padding:16px 20px; flex:1; min-width:180px; }
+.sc-label { font-family:'Rubik',sans-serif; font-size:8px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--red); margin-bottom:6px; }
+.sc-value { font-family:'Rubik',sans-serif; font-size:12px; color:var(--white); line-height:1.5; }
+
+/* ══════════════════════════
+   COVER
+══════════════════════════ */
+#cover { background:var(--dark); display:flex; flex-direction:column; justify-content:center; padding:80px 90px; }
+.cover-pre { font-family:'Rubik',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:var(--red); margin-bottom:24px; display:flex; align-items:center; gap:12px; }
+.cover-pre::before { content:''; width:28px; height:1px; background:var(--red); }
+.cover-title { font-family:'Inter',sans-serif; font-size:68px; font-weight:900; line-height:1.02; letter-spacing:-0.03em; color:var(--white); max-width:680px; margin-bottom:22px; }
+.cover-title span { color:var(--red); }
+.cover-desc { font-family:'Roboto',sans-serif; font-size:16px; font-weight:300; color:var(--gray); max-width:520px; line-height:1.75; margin-bottom:48px; }
+.cover-pills { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:60px; }
+.pill { font-family:'Rubik',sans-serif; font-size:10px; font-weight:500; letter-spacing:0.08em; color:var(--white); background:var(--dark3); border:1px solid var(--border); padding:7px 14px; display:flex; align-items:center; gap:7px; }
+.pdot { width:4px; height:4px; background:var(--red); border-radius:50%; }
+.cover-meta { display:flex; gap:36px; }
+.meta-item label { font-family:'Rubik',sans-serif; font-size:8px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray2); display:block; margin-bottom:5px; }
+.meta-item p { font-family:'Rubik',sans-serif; font-size:12px; font-weight:500; color:var(--white); }
+
+/* ══════════════════════════
+   01 · WEB
+══════════════════════════ */
+#web { background:var(--dark2); }
+
+.browser-wrap { box-shadow:0 48px 120px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.04); border-radius:8px; overflow:hidden; }
+.browser-bar { background:#202020; height:40px; display:flex; align-items:center; padding:0 14px; gap:10px; border-bottom:1px solid rgba(255,255,255,0.07); }
+.bdots { display:flex; gap:5px; }
+.bdots span { width:10px; height:10px; border-radius:50%; }
+.bd-r{background:#ff5f57;} .bd-y{background:#febc2e;} .bd-g{background:#28c840;}
+.burl { flex:1; background:#181818; border:1px solid rgba(255,255,255,0.08); border-radius:4px; height:24px; display:flex; align-items:center; padding:0 10px; gap:6px; }
+.burl-lock { font-size:9px; color:#4caf50; }
+.burl-text { font-family:'Roboto',sans-serif; font-size:10px; color:#777; }
+
+/* website mock */
+.wm-nav { background:#0d0d0d; height:60px; display:flex; align-items:center; justify-content:space-between; padding:0 36px; border-bottom:1px solid rgba(255,255,255,0.05); }
+.wm-logo { font-family:'Inter',sans-serif; font-size:15px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#fff; }
+.wm-links { display:flex; align-items:center; gap:24px; }
+.wm-links a { font-family:'Rubik',sans-serif; font-size:10px; color:#888; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; }
+.wm-btn { font-family:'Rubik',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:#861705; border:none; padding:8px 18px; cursor:pointer; }
+.wm-hero { background:linear-gradient(140deg,#0a0a0a 55%,#1c0805 100%); padding:56px 36px 48px; position:relative; overflow:hidden; }
+.wm-hero-glow { position:absolute; top:-60px; right:-60px; width:350px; height:350px; background:radial-gradient(circle,rgba(134,23,5,0.1) 0%,transparent 70%); border-radius:50%; pointer-events:none; }
+.hero-badge { display:inline-flex; align-items:center; gap:7px; background:rgba(134,23,5,0.13); border:1px solid rgba(134,23,5,0.3); padding:5px 12px; margin-bottom:20px; }
+.hb-dot { width:4px; height:4px; background:#861705; border-radius:50%; }
+.hb-text { font-family:'Rubik',sans-serif; font-size:9px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#c0382b; }
+.wm-hero h1 { font-family:'Inter',sans-serif; font-size:42px; font-weight:900; line-height:1.05; letter-spacing:-0.025em; color:#fff; max-width:560px; margin-bottom:14px; }
+.wm-hero h1 em { font-style:normal; color:#861705; }
+.wm-hero p { font-family:'Roboto',sans-serif; font-weight:300; font-size:13px; color:#888; max-width:420px; line-height:1.7; margin-bottom:28px; }
+.hero-btns { display:flex; gap:10px; align-items:center; margin-bottom:44px; }
+.hbtn-p { font-family:'Rubik',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:#861705; padding:11px 24px; border:none; cursor:pointer; }
+.hbtn-s { font-family:'Rubik',sans-serif; font-size:10px; font-weight:400; letter-spacing:0.08em; text-transform:uppercase; color:#888; background:transparent; padding:10px 20px; border:1px solid rgba(255,255,255,0.12); cursor:pointer; }
+.stats-row { display:flex; gap:0; border-top:1px solid rgba(255,255,255,0.07); padding-top:28px; }
+.stat-bl { flex:1; padding-right:28px; border-right:1px solid rgba(255,255,255,0.07); margin-right:28px; }
+.stat-bl:last-child { border-right:none; margin-right:0; }
+.stat-n { font-family:'Inter',sans-serif; font-size:28px; font-weight:800; color:#fff; line-height:1; }
+.stat-n span { color:#861705; }
+.stat-l { font-family:'Rubik',sans-serif; font-size:9px; color:#444; letter-spacing:0.12em; text-transform:uppercase; margin-top:4px; }
+.wm-proj { background:#F2F2F2; padding:28px 36px; }
+.wm-proj-label { font-family:'Rubik',sans-serif; font-size:8px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:#861705; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+.wm-proj-label::after { content:''; flex:1; height:1px; background:rgba(0,0,0,0.1); }
+.proj-card { display:grid; grid-template-columns:1fr 1.2fr; background:#fff; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden; }
+.proj-img { background:linear-gradient(135deg,#161616,#2a0a07); padding:28px; display:flex; flex-direction:column; justify-content:flex-end; min-height:180px; position:relative; overflow:hidden; }
+.proj-img-geo { position:absolute; border:1px solid rgba(255,255,255,0.03); border-radius:50%; width:220px; height:220px; top:-50px; right:-50px; }
+.ptag { font-family:'Rubik',sans-serif; font-size:8px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#fff; background:#861705; padding:3px 9px; display:inline-block; margin-bottom:10px; position:relative; z-index:1; }
+.ptitle { font-family:'Inter',sans-serif; font-size:18px; font-weight:800; color:#fff; position:relative; z-index:1; }
+.paddr { font-family:'Rubik',sans-serif; font-size:9px; color:rgba(255,255,255,0.4); margin-top:4px; position:relative; z-index:1; }
+.proj-data { padding:20px 24px; }
+.proj-metrics { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+.pm { padding:10px 0; border-bottom:1px solid #f0f0f0; }
+.pm-v { font-family:'Inter',sans-serif; font-size:18px; font-weight:800; color:#101010; line-height:1; }
+.pm-v.hl { color:#861705; }
+.pm-l { font-family:'Rubik',sans-serif; font-size:8px; color:#aaa; letter-spacing:0.1em; text-transform:uppercase; margin-top:2px; }
+.proj-cta { font-family:'Rubik',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#fff; background:#861705; padding:9px 18px; display:inline-block; }
+.wm-disclaimer { background:#0a0a0a; padding:7px 36px; font-family:'Roboto',sans-serif; font-size:8px; color:#333; line-height:1.5; }
+
+/* ══════════════════════════
+   PLATFORM STRATEGY INTRO
+══════════════════════════ */
+.platform-intro { background:var(--dark3); border:1px solid var(--border); padding:28px 32px; margin-bottom:48px; }
+.pi-title { font-family:'Inter',sans-serif; font-size:14px; font-weight:700; color:#fff; margin-bottom:12px; }
+.pi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.pi-col { border-left:2px solid var(--red); padding-left:14px; }
+.pi-platform { font-family:'Rubik',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--red); margin-bottom:5px; }
+.pi-audience { font-family:'Rubik',sans-serif; font-size:11px; color:#ccc; line-height:1.5; margin-bottom:4px; }
+.pi-kpi { font-family:'Roboto',sans-serif; font-size:10px; color:var(--gray2); }
+
+/* ══════════════════════════
+   02 · INSTAGRAM
+══════════════════════════ */
+#instagram { background:var(--dark); }
+
+.insta-layout { display:grid; grid-template-columns:280px 1fr; gap:48px; align-items:start; }
+
+/* Phone frame */
+.phone-frame { width:280px; background:#1a1a1a; border-radius:36px; border:8px solid #252525; box-shadow:0 32px 80px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.06); overflow:hidden; position:sticky; top:32px; }
+.phone-notch { background:#1a1a1a; height:28px; display:flex; align-items:center; justify-content:center; }
+.phone-notch-inner { width:80px; height:16px; background:#111; border-radius:10px; }
+.ig-header { background:#0d0d0d; display:flex; align-items:center; justify-content:space-between; padding:8px 14px 6px; }
+.ig-logo { font-family:'Inter',sans-serif; font-size:16px; font-weight:800; color:#fff; font-style:italic; letter-spacing:-0.02em; }
+.ig-icons { display:flex; gap:12px; }
+.ig-icon { font-size:14px; }
+.ig-stories { display:flex; gap:8px; padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden; }
+.ig-story { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.ig-story-ring { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); padding:2px; }
+.ig-story-av { width:100%; height:100%; border-radius:50%; background:#222; border:2px solid #0d0d0d; display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size:11px; font-weight:700; color:#fff; }
+.ig-story-name { font-family:'Rubik',sans-serif; font-size:7px; color:#999; }
+
+/* Feed post in phone */
+.ig-post { border-bottom:1px solid rgba(255,255,255,0.05); }
+.ig-post-header { display:flex; align-items:center; justify-content:space-between; padding:7px 12px; }
+.ig-post-profile { display:flex; align-items:center; gap:7px; }
+.ig-post-av { width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#861705,#5a0d04); display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size:9px; font-weight:800; color:#fff; }
+.ig-post-name { font-family:'Rubik',sans-serif; font-size:10px; font-weight:600; color:#fff; }
+.ig-post-loc { font-family:'Roboto',sans-serif; font-size:8px; color:#777; }
+.ig-post-more { color:#888; font-size:14px; letter-spacing:1px; }
+.ig-post-img { width:100%; aspect-ratio:1; overflow:hidden; }
+.ig-post-actions { display:flex; align-items:center; padding:7px 12px 4px; gap:12px; }
+.ig-act { font-size:16px; }
+.ig-save { margin-left:auto; font-size:16px; }
+.ig-likes { font-family:'Rubik',sans-serif; font-size:9px; font-weight:600; color:#fff; padding:0 12px 3px; }
+.ig-caption { font-family:'Roboto',sans-serif; font-size:9px; color:#ddd; padding:0 12px 8px; line-height:1.5; }
+.ig-caption strong { color:#fff; font-weight:600; }
+.ig-caption .hashtags { color:#5a9fd4; }
+
+/* Product post design */
+.igpost-1 {
+  width:100%; height:100%;
+  background:#0d0d0d;
+  display:flex; flex-direction:column;
+  padding:0; overflow:hidden;
+}
+.igp1-top { background:#861705; padding:12px 14px 10px; }
+.igp1-badge { font-family:'Rubik',sans-serif; font-size:7px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:5px; }
+.igp1-h { font-family:'Inter',sans-serif; font-size:13px; font-weight:800; color:#fff; line-height:1.15; letter-spacing:-0.01em; }
+.igp1-body { padding:10px 14px; flex:1; }
+.igp1-num { font-family:'Inter',sans-serif; font-size:36px; font-weight:900; color:#fff; line-height:1; }
+.igp1-num span { font-size:16px; color:#861705; }
+.igp1-lbl { font-family:'Rubik',sans-serif; font-size:7px; color:#555; letter-spacing:0.12em; text-transform:uppercase; margin-top:2px; margin-bottom:8px; }
+.igp1-div { height:1px; background:rgba(255,255,255,0.06); margin:8px 0; }
+.igp1-rows { display:flex; flex-direction:column; gap:4px; }
+.igp1-row { display:flex; justify-content:space-between; align-items:center; }
+.igp1-row-k { font-family:'Roboto',sans-serif; font-size:8px; color:#555; }
+.igp1-row-v { font-family:'Inter',sans-serif; font-size:8px; font-weight:700; color:#ccc; }
+.igp1-footer { background:#111; padding:7px 14px; display:flex; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.04); }
+.igp1-handle { font-family:'Rubik',sans-serif; font-size:7px; color:#444; }
+.igp1-logo { font-family:'Inter',sans-serif; font-size:8px; font-weight:800; letter-spacing:0.1em; color:#fff; text-transform:uppercase; }
+
+/* Right column: post variations */
+.ig-right { display:flex; flex-direction:column; gap:28px; }
+
+.ig-post-card { background:var(--dark3); border:1px solid var(--border); overflow:hidden; }
+.ipc-header { padding:16px 20px 12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.ipc-type { font-family:'Rubik',sans-serif; font-size:8px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--red); }
+.ipc-format { font-family:'Rubik',sans-serif; font-size:8px; color:var(--gray2); }
+.ipc-body { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+.ipc-visual { aspect-ratio:1; overflow:hidden; position:relative; }
+.ipc-meta { padding:16px 20px; }
+.ipc-title { font-family:'Inter',sans-serif; font-size:14px; font-weight:700; color:#fff; margin-bottom:10px; line-height:1.3; }
+.ipc-caption { font-family:'Roboto',sans-serif; font-size:11px; font-weight:300; color:var(--gray); line-height:1.65; margin-bottom:12px; }
+.ipc-tags { font-family:'Roboto',sans-serif; font-size:10px; color:#4a90d9; line-height:1.6; }
+.ipc-rationale { padding:12px 20px; background:rgba(134,23,5,0.06); border-top:1px solid rgba(134,23,5,0.12); }
+.ipc-rat-label { font-family:'Rubik',sans-serif; font-size:8px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--red); margin-bottom:4px; }
+.ipc-rat-text { font-family:'Roboto',sans-serif; font-size:10px; color:var(--gray2); line-height:1.5; }
+
+/* Visual designs for posts */
+.vis-data {
+  width:100%; height:100%;
+  background:#F2F2F2;
+  display:flex; flex-direction:column;
+  overflow:hidden;
+}
+.vd-top { background:#101010; padding:12px 14px; }
+.vd-eye { font-family:'Rubik',sans-serif; font-size:7px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#861705; margin-bottom:4px; }
+.vd-h { font-family:'Inter',sans-serif; font-size:13px; font-weight:800; color:#fff; line-height:1.2; }
+.vd-body { flex:1; padding:12px 14px; display:flex; flex-direction:column; gap:6px; justify-content:center; }
+.vd-big { text-align:center; }
+.vd-big-n { font-family:'Inter',sans-serif; font-size:48px; font-weight:900; color:#861705; line-height:1; letter-spacing:-0.04em; }
+.vd-big-l { font-family:'Rubik',sans-serif; font-size:8px; color:#aaa; letter-spacing:0.12em; text-transform:uppercase; margin-top:3px; }
+.vd-rows { display:flex; flex-direction:column; gap:4px; border-top:1px solid #e0e0e0; padding-top:8px; margin-top:4px; }
+.vd-row { display:flex; justify-content:space-between; align-items:center; padding:3px 0; border-bottom:1px solid #eee; }
+.vd-row:last-child { border:none; }
+.vd-row-k { font-family:'Roboto',sans-serif; font-size:8px; color:#888; }
+.vd-row-v { font-family:'Inter',sans-serif; font-size:9px; font-weight:700; color:#222; }
+.vd-footer { background:#861705; padding:6px 14px; font-family:'Rubik',sans-serif; font-size:7px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.8); text-align:center; }
+
+/* Edu post visual */
+.vis-edu {
+  width:100%; height:100%;
+  background:#161616;
+  display:flex; flex-direction:column;
+  overflow:hidden;
+}
+.ve-num-bg { font-family:'Inter',sans-serif; font-size:64px; font-weight:900; color:rgba(134,23,5,0.12); line-height:1; padding:8px 12px 0; }
+.ve-title { font-family:'Inter',sans-serif; font-size:14px; font-weight:800; color:#fff; padding:0 14px 8px; line-height:1.25; letter-spacing:-0.01em; }
+.ve-bar { height:2px; background:#861705; margin:0 14px 10px; }
+.ve-list { padding:0 14px; flex:1; display:flex; flex-direction:column; gap:5px; }
+.ve-item { display:flex; gap:8px; align-items:flex-start; }
+.ve-in { font-family:'Inter',sans-serif; font-size:9px; font-weight:700; color:#861705; min-width:14px; }
+.ve-it { font-family:'Rubik',sans-serif; font-size:9px; color:#ccc; line-height:1.4; }
+.ve-it strong { color:#fff; }
+.ve-footer { padding:8px 14px; background:rgba(134,23,5,0.08); border-top:1px solid rgba(134,23,5,0.15); margin-top:8px; }
+.ve-cta { font-family:'Rubik',sans-serif; font-size:8px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#861705; }
+
+/* Story visual */
+.vis-story {
+  width:100%; height:100%;
+  background:linear-gradient(160deg,#0d0d0d 0%,#1e0805 60%,#0d0d0d 100%);
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  padding:16px;
+  position:relative;
+  overflow:hidden;
+}
+.vs-geo { position:absolute; border:1px solid rgba(134,23,5,0.15); border-radius:50%; }
+.vs-content { position:relative; z-index:1; text-align:center; }
+.vs-pre { font-family:'Rubik',sans-serif; font-size:7px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(134,23,5,0.8); margin-bottom:8px; }
+.vs-big { font-family:'Inter',sans-serif; font-size:28px; font-weight:900; color:#fff; line-height:1.1; letter-spacing:-0.02em; margin-bottom:8px; }
+.vs-big em { font-style:normal; color:#861705; }
+.vs-sub { font-family:'Roboto',sans-serif; font-size:9px; font-weight:300; color:rgba(255,255,255,0.5); line-height:1.5; }
+.vs-cta-bar { background:#861705; padding:7px 14px; margin-top:12px; }
+.vs-cta-text { font-family:'Rubik',sans-serif; font-size:8px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#fff; }
+
+/* ══════════════════════════
+   03 · LINKEDIN
+══════════════════════════ */
+#linkedin { background:var(--dark2); }
+
+.li-layout { display:flex; flex-direction:column; gap:32px; }
+
+.li-card {
+  background:#fff;
+  border-radius:4px;
+  overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+  max-width:680px;
+}
+.li-card-header { padding:14px 16px 12px; display:flex; align-items:flex-start; gap:10px; border-bottom:1px solid #f0f0f0; }
+.li-av { width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,#861705,#5a0d04); display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size:14px; font-weight:800; color:#fff; flex-shrink:0; }
+.li-profile-name { font-family:'Arial',sans-serif; font-size:13px; font-weight:700; color:#000; }
+.li-profile-title { font-family:'Arial',sans-serif; font-size:11px; color:#666; }
+.li-profile-time { font-family:'Arial',sans-serif; font-size:10px; color:#999; }
+.li-follow { margin-left:auto; font-family:'Arial',sans-serif; font-size:12px; font-weight:600; color:#0a66c2; padding:5px 0; flex-shrink:0; }
+.li-body { padding:12px 16px; }
+.li-text { font-family:'Arial',sans-serif; font-size:13px; color:#111; line-height:1.6; }
+.li-text strong { font-weight:700; }
+.li-text .li-highlight { color:#861705; font-weight:700; }
+.li-text .li-link { color:#0a66c2; }
+.li-spacer { height:10px; }
+.li-image { width:100%; background:linear-gradient(135deg,#101010,#1e0805); padding:28px; }
+.li-img-content { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.li-img-stat { text-align:center; }
+.li-img-num { font-family:'Inter',sans-serif; font-size:26px; font-weight:900; color:#fff; line-height:1; }
+.li-img-num span { color:#861705; }
+.li-img-lbl { font-family:'Rubik',sans-serif; font-size:8px; color:#666; letter-spacing:0.1em; text-transform:uppercase; margin-top:4px; }
+.li-img-logo { font-family:'Inter',sans-serif; font-size:12px; font-weight:800; letter-spacing:0.1em; color:#fff; text-transform:uppercase; text-align:right; margin-bottom:16px; }
+.li-reactions { padding:8px 16px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid #f0f0f0; }
+.li-react-count { font-family:'Arial',sans-serif; font-size:11px; color:#666; }
+.li-react-row { display:flex; gap:0; }
+.li-react-btn { font-family:'Arial',sans-serif; font-size:12px; color:#666; padding:6px 14px; display:flex; align-items:center; gap:5px; cursor:pointer; }
+.li-react-btn:hover { background:#f3f2f0; border-radius:4px; }
+
+/* Thought leadership post */
+.li-tl-img { background:linear-gradient(135deg,#0d0d0d,#1c0805); padding:24px; }
+.li-tl-quote { font-family:'Inter',sans-serif; font-size:16px; font-weight:700; color:#fff; line-height:1.4; letter-spacing:-0.01em; margin-bottom:16px; }
+.li-tl-source { font-family:'Rubik',sans-serif; font-size:9px; color:#555; letter-spacing:0.1em; text-transform:uppercase; }
+.li-tl-bar { width:40px; height:2px; background:#861705; margin-bottom:12px; }
+.li-tl-logo { font-family:'Inter',sans-serif; font-size:12px; font-weight:800; letter-spacing:0.1em; color:#fff; text-transform:uppercase; text-align:right; }
+
+.li-rationale { background:#f8f9fa; padding:12px 16px; border-top:1px solid #e8e8e8; }
+.li-rat-l { font-family:'Arial',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#861705; margin-bottom:4px; }
+.li-rat-t { font-family:'Arial',sans-serif; font-size:11px; color:#555; line-height:1.5; }
+
+/* ══════════════════════════
+   04 · X / TWITTER
+══════════════════════════ */
+#xtwitter { background:var(--bg); }
+
+.x-layout { display:grid; grid-template-columns:360px 1fr; gap:48px; align-items:start; }
+
+/* X app frame */
+.x-frame { background:#000; border-radius:12px; border:1px solid #2f3336; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,0.9); }
+.x-header { background:#000; height:52px; display:flex; align-items:center; padding:0 16px; border-bottom:1px solid #2f3336; gap:16px; }
+.x-logo { font-family:'Inter',sans-serif; font-size:18px; font-weight:900; color:#fff; }
+.x-header-text { font-family:'Arial',sans-serif; font-size:15px; font-weight:700; color:#fff; }
+
+.x-tweet { padding:14px 16px; border-bottom:1px solid #2f3336; }
+.x-tweet-header { display:flex; gap:10px; margin-bottom:8px; }
+.x-av { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#861705,#5a0d04); display:flex; align-items:center; justify-content:justify-content'; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size:12px; font-weight:800; color:#fff; flex-shrink:0; }
+.x-name { font-family:'Arial',sans-serif; font-size:13px; font-weight:700; color:#fff; }
+.x-handle { font-family:'Arial',sans-serif; font-size:12px; color:#71767b; }
+.x-text { font-family:'Arial',sans-serif; font-size:14px; color:#e7e9ea; line-height:1.5; }
+.x-text strong { color:#fff; font-weight:700; }
+.x-text .xlink { color:#1d9bf0; }
+.x-text .xnum { color:#fff; font-weight:700; }
+.x-actions { display:flex; justify-content:space-between; margin-top:12px; }
+.x-act { font-family:'Arial',sans-serif; font-size:12px; color:#71767b; display:flex; align-items:center; gap:5px; }
+.x-thread-line { width:2px; background:#2f3336; margin:0 0 0 34px; height:16px; }
+.x-card { border:1px solid #2f3336; border-radius:12px; overflow:hidden; margin-top:10px; }
+.x-card-img { background:linear-gradient(135deg,#0d0d0d,#1e0805); padding:20px; }
+.x-card-data { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.x-cd-num { font-family:'Inter',sans-serif; font-size:22px; font-weight:900; color:#fff; line-height:1; }
+.x-cd-num span { color:#861705; font-size:12px; }
+.x-cd-lbl { font-family:'Rubik',sans-serif; font-size:7px; color:#555; letter-spacing:0.1em; text-transform:uppercase; margin-top:3px; }
+.x-card-footer { background:#161616; padding:8px 16px; display:flex; justify-content:space-between; align-items:center; }
+.x-card-domain { font-family:'Arial',sans-serif; font-size:10px; color:#71767b; }
+.x-card-logo { font-family:'Inter',sans-serif; font-size:10px; font-weight:800; letter-spacing:0.1em; color:#fff; text-transform:uppercase; }
+
+/* X right column: strategy */
+.x-right { display:flex; flex-direction:column; gap:24px; }
+.x-strategy-card { background:var(--dark3); border:1px solid var(--border); padding:24px; }
+.x-sc-title { font-family:'Inter',sans-serif; font-size:14px; font-weight:700; color:#fff; margin-bottom:14px; }
+.x-thread-preview { display:flex; flex-direction:column; gap:0; }
+.x-tp-item { display:flex; gap:12px; align-items:flex-start; padding-bottom:0; }
+.x-tp-left { display:flex; flex-direction:column; align-items:center; gap:0; }
+.x-tp-av-sm { width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,#861705,#5a0d04); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size:9px; font-weight:800; color:#fff; }
+.x-tp-line { width:1px; background:var(--border); flex:1; min-height:24px; margin:3px 0; }
+.x-tp-content { flex:1; padding-bottom:16px; }
+.x-tp-text { font-family:'Roboto',sans-serif; font-size:12px; color:#ccc; line-height:1.6; }
+.x-tp-text strong { color:#fff; }
+.x-tp-text .xh { color:#1d9bf0; }
+.x-tp-num { font-family:'Rubik',sans-serif; font-size:9px; color:var(--gray2); margin-bottom:4px; }
+
+/* ══════════════════════════
+   05 · BLOG
+══════════════════════════ */
+#blog { background:var(--light2); padding:64px 0; }
+#blog .eyebrow { padding:0 72px; }
+
+.blog-article { max-width:800px; margin:0 auto; padding:0 72px; }
+.btags { display:flex; gap:8px; margin-bottom:18px; }
+.btag { font-family:'Rubik',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--red); background:rgba(134,23,5,0.07); padding:4px 10px; border:1px solid rgba(134,23,5,0.18); }
+.blog-h { font-family:'Inter',sans-serif; font-size:38px; font-weight:900; line-height:1.08; letter-spacing:-0.025em; color:#101010; margin-bottom:14px; }
+.blog-dek { font-family:'Roboto',sans-serif; font-size:18px; font-weight:300; color:#555; line-height:1.6; border-left:3px solid var(--red); padding-left:18px; margin-bottom:24px; }
+.blog-meta { display:flex; align-items:center; gap:20px; padding:14px 0; border-top:1px solid #ddd; border-bottom:1px solid #ddd; margin-bottom:32px; }
+.b-author { display:flex; align-items:center; gap:8px; }
+.b-av { width:32px; height:32px; background:linear-gradient(135deg,#861705,#5a0d04); display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size:11px; font-weight:800; color:#fff; }
+.b-name { font-family:'Rubik',sans-serif; font-size:12px; font-weight:600; color:#101010; }
+.b-role { font-family:'Roboto',sans-serif; font-size:9px; color:#999; }
+.b-sep { width:1px; height:20px; background:#ddd; }
+.b-meta { font-family:'Rubik',sans-serif; font-size:10px; color:#aaa; }
+.blog-hero { background:linear-gradient(135deg,#101010,#2a0a07); height:220px; margin-bottom:32px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.bhg1 { position:absolute; width:260px; height:260px; border:1px solid rgba(134,23,5,0.18); border-radius:50%; top:-60px; right:-40px; }
+.bhg2 { position:absolute; width:160px; height:160px; border:1px solid rgba(255,255,255,0.03); transform:rotate(45deg); bottom:20px; left:-20px; }
+.blog-hero-quote { font-family:'Inter',sans-serif; font-size:21px; font-weight:800; color:#fff; text-align:center; letter-spacing:-0.015em; padding:0 36px; line-height:1.25; position:relative; z-index:1; }
+.blog-hero-quote em { font-style:normal; color:#861705; }
+
+.blog-body h2 { font-family:'Inter',sans-serif; font-size:22px; font-weight:800; color:#101010; margin:32px 0 12px; letter-spacing:-0.01em; }
+.blog-body h3 { font-family:'Rubik',sans-serif; font-size:16px; font-weight:600; color:#101010; margin:20px 0 8px; }
+.blog-body p { font-family:'Roboto',sans-serif; font-size:16px; font-weight:300; color:#444; line-height:1.8; margin-bottom:14px; }
+.blog-body strong { font-weight:500; color:#222; }
+.pull-q { margin:28px 0; padding:20px 24px; border-left:3px solid var(--red); background:rgba(134,23,5,0.04); }
+.pull-q p { font-family:'Inter',sans-serif; font-size:18px; font-weight:700; color:#101010; line-height:1.4; font-style:italic; margin:0; }
+.data-box { background:#101010; padding:20px 24px; margin:24px 0; }
+.db-title { font-family:'Rubik',sans-serif; font-size:8px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--red); margin-bottom:14px; }
+.db-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.db-num { font-family:'Inter',sans-serif; font-size:26px; font-weight:900; color:#fff; line-height:1; }
+.db-num .acc { color:var(--red); }
+.db-lbl { font-family:'Rubik',sans-serif; font-size:8px; color:#555; letter-spacing:0.1em; text-transform:uppercase; margin-top:3px; }
+.zone-tbl { width:100%; border-collapse:collapse; margin:16px 0; font-family:'Roboto',sans-serif; font-size:12px; }
+.zone-tbl th { background:#101010; color:#fff; padding:9px 12px; text-align:left; font-size:8px; letter-spacing:0.15em; text-transform:uppercase; font-weight:600; }
+.zone-tbl td { padding:9px 12px; border-bottom:1px solid #e8e8e8; color:#333; }
+.zone-tbl tr:hover td { background:rgba(134,23,5,0.03); }
+.zbadge { font-size:8px; font-weight:700; padding:2px 7px; letter-spacing:0.08em; text-transform:uppercase; }
+.zb-a { background:rgba(134,23,5,0.1); color:#861705; }
+.zb-m { background:rgba(0,0,0,0.05); color:#666; }
+.blog-cta { background:linear-gradient(135deg,#101010,#1e0805); padding:28px 32px; margin:32px 0 16px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.blog-cta h4 { font-family:'Inter',sans-serif; font-size:16px; font-weight:800; color:#fff; margin-bottom:5px; }
+.blog-cta p { font-family:'Roboto',sans-serif; font-size:12px; color:#888; margin:0; }
+.blog-cta-btn { font-family:'Rubik',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:#861705; padding:12px 24px; white-space:nowrap; flex-shrink:0; }
+.blog-disclaimer { font-family:'Roboto',sans-serif; font-size:9px; color:#bbb; line-height:1.5; padding:14px 0; border-top:1px solid #ddd; }
+
+/* ══════════════════════════
+   06 · EMAIL
+══════════════════════════ */
+#email { background:var(--dark2); }
+.email-frame { background:#f6f8fc; border-radius:8px; overflow:hidden; box-shadow:0 40px 100px rgba(0,0,0,0.7); border:1px solid rgba(255,255,255,0.06); }
+.email-topbar { background:#fff; height:48px; display:flex; align-items:center; padding:0 18px; gap:16px; border-bottom:1px solid #e0e0e0; }
+.gmail-l { font-family:'Roboto',sans-serif; font-size:18px; color:#aaa; font-weight:300; }
+.gmail-l b { color:#4285F4; }
+.email-info { display:flex; flex-direction:column; gap:1px; }
+.email-subject-bar { font-family:'Roboto',sans-serif; font-size:11px; font-weight:500; color:#333; }
+.email-from-bar { font-family:'Roboto',sans-serif; font-size:9px; color:#aaa; }
+.email-body { padding:18px 36px; }
+.email-card { background:#fff; max-width:580px; margin:0 auto; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+.em-header { background:#101010; padding:24px 36px; display:flex; align-items:center; justify-content:space-between; }
+.em-logo { font-family:'Inter',sans-serif; font-size:14px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#fff; }
+.em-logo-sub { font-family:'Rubik',sans-serif; font-size:7px; color:#444; letter-spacing:0.2em; text-transform:uppercase; margin-top:2px; }
+.em-header-tag { font-family:'Rubik',sans-serif; font-size:7px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#fff; background:#861705; padding:5px 10px; }
+.em-hero { background:#861705; padding:18px 36px; text-align:center; }
+.em-hero h2 { font-family:'Inter',sans-serif; font-size:18px; font-weight:800; color:#fff; line-height:1.25; letter-spacing:-0.01em; }
+.em-content { padding:28px 36px; }
+.em-greeting { font-family:'Rubik',sans-serif; font-size:13px; color:#333; margin-bottom:12px; }
+.em-p { font-family:'Roboto',sans-serif; font-size:12px; font-weight:300; color:#444; line-height:1.7; margin-bottom:12px; }
+.em-metrics { display:flex; gap:10px; margin:18px 0 22px; }
+.em-mc { flex:1; background:#f9f9f9; border:1px solid #eee; padding:12px; text-align:center; }
+.em-mv { font-family:'Inter',sans-serif; font-size:20px; font-weight:900; color:#101010; line-height:1; }
+.em-mv .a { color:#861705; }
+.em-ml { font-family:'Rubik',sans-serif; font-size:7px; color:#bbb; letter-spacing:0.12em; text-transform:uppercase; margin-top:3px; }
+.em-cta { text-align:center; margin:20px 0; }
+.em-btn { display:inline-block; font-family:'Rubik',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:#861705; padding:13px 32px; text-decoration:none; }
+.em-hint { font-family:'Roboto',sans-serif; font-size:10px; color:#ccc; margin-top:8px; }
+.em-div { height:1px; background:#eee; margin:18px 0; }
+.em-footer { background:#f9f9f9; padding:18px 36px; border-top:1px solid #eee; }
+.em-foot-text { font-family:'Roboto',sans-serif; font-size:9px; color:#ccc; line-height:1.6; text-align:center; }
+.em-foot-links { display:flex; justify-content:center; gap:14px; margin-top:8px; }
+.em-foot-links a { font-family:'Rubik',sans-serif; font-size:9px; color:#861705; text-decoration:none; }
+
+/* Next steps banner */
+.next-steps { background:var(--dark3); border:1px solid var(--border); padding:24px 28px; margin-top:32px; }
+.ns-title { font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:#fff; margin-bottom:14px; display:flex; align-items:center; gap:10px; }
+.ns-title::after { content:''; flex:1; height:1px; background:var(--border); }
+.ns-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.ns-item { }
+.ns-num { font-family:'Inter',sans-serif; font-size:24px; font-weight:900; color:rgba(134,23,5,0.2); line-height:1; margin-bottom:4px; }
+.ns-label { font-family:'Rubik',sans-serif; font-size:11px; font-weight:600; color:#fff; margin-bottom:4px; }
+.ns-desc { font-family:'Roboto',sans-serif; font-size:10px; color:var(--gray2); line-height:1.5; }
+</style>
+</head>
+<body>
+
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-h">Hestia</div>
+    <div class="logo-sub">Portfolio · Marketing Digital</div>
+  </div>
+  <div class="sidebar-label">Propuestas</div>
+  <a href="#cover" class="nav-item active">
+    <span class="nav-num">—</span>
+    <span class="nav-text">Portada</span>
+  </a>
+  <a href="#web" class="nav-item">
+    <span class="nav-num">01</span>
+    <span class="nav-text">Propuesta web<br>Homepage rediseñada</span>
+  </a>
+  <a href="#instagram" class="nav-item">
+    <span class="nav-num">02</span>
+    <span class="nav-text">Instagram<br>Feed · Story · Carrusel</span>
+  </a>
+  <a href="#linkedin" class="nav-item">
+    <span class="nav-num">03</span>
+    <span class="nav-text">LinkedIn<br>Company · Thought leadership</span>
+  </a>
+  <a href="#xtwitter" class="nav-item">
+    <span class="nav-num">04</span>
+    <span class="nav-text">X / Twitter<br>Thread de datos</span>
+  </a>
+  <a href="#blog" class="nav-item">
+    <span class="nav-num">05</span>
+    <span class="nav-text">Contenido editorial<br>Post de blog SEO</span>
+  </a>
+  <a href="#email" class="nav-item">
+    <span class="nav-num">06</span>
+    <span class="nav-text">Email marketing<br>Secuencia de nurturing</span>
+  </a>
+  <div class="sidebar-footer">
+    <p>Entrevista · Técnico/a de Marketing<br><span>Hestia Inversión Patrimonial</span><br>Sevilla · Junio 2026</p>
+  </div>
+</aside>
+
+<main class="main">
+
+<!-- ════════════ PORTADA ════════════ -->
+<section id="cover">
+  <div class="cover-pre">Portfolio de propuestas de marketing digital</div>
+  <h1 class="cover-title">Hestia.<br><span>Marca,</span> no solo<br>producto.</h1>
+  <p class="cover-desc">Un diagnóstico real, piezas listas para ejecutar y una estrategia de plataformas pensada para el inversor de Sevilla — y para el inversor internacional que aún no sabe que Sevilla existe.</p>
+  <div class="cover-pills">
+    <div class="pill"><span class="pdot"></span>Web & WordPress</div>
+    <div class="pill"><span class="pdot"></span>SEO · SEM</div>
+    <div class="pill"><span class="pdot"></span>Instagram</div>
+    <div class="pill"><span class="pdot"></span>LinkedIn</div>
+    <div class="pill"><span class="pdot"></span>X / Twitter</div>
+    <div class="pill"><span class="pdot"></span>Email marketing</div>
+    <div class="pill"><span class="pdot"></span>Blog editorial</div>
+  </div>
+  <div class="cover-meta">
+    <div class="meta-item"><label>Empresa</label><p>Hestia Inversión Patrimonial</p></div>
+    <div class="meta-item"><label>Puesto</label><p>Técnico/a de Marketing</p></div>
+    <div class="meta-item"><label>Web actual</label><p>hestiainmuebles.com</p></div>
+    <div class="meta-item"><label>Fecha</label><p>Junio 2026</p></div>
+  </div>
+</section>
+
+<!-- ════════════ 01 WEB ════════════ -->
+<section id="web">
+  <div class="eyebrow"><span class="etag">01 · Propuesta web</span><span class="eline"></span></div>
+  <h2 class="sec-title">Homepage rediseñada</h2>
+  <p class="sec-sub">El CTA roto es una conversión perdida cada día. Quick win de semana 1: arreglar el enlace, añadir tagline con tesis, poner cifras en portada. Sin cambiar el diseño — respetando el sistema existente.</p>
+  <div class="browser-wrap">
+    <div class="browser-bar">
+      <div class="bdots"><span class="bd-r"></span><span class="bd-y"></span><span class="bd-g"></span></div>
+      <div class="burl"><span class="burl-lock">🔒</span><span class="burl-text">hestiainmuebles.com</span></div>
+    </div>
+    <div class="wm-nav">
+      <div class="wm-logo">HESTIA</div>
+      <div class="wm-links">
+        <a href="#">Proyectos</a>
+        <a href="#">Sobre Nosotros</a>
+        <a href="#">Inversores</a>
+        <a href="#" style="color:#861705;font-weight:600;">EN</a>
+        <button class="wm-btn">Agenda tu cita →</button>
+      </div>
+    </div>
+    <div class="wm-hero">
+      <div class="wm-hero-glow"></div>
+      <div class="hero-badge"><span class="hb-dot"></span><span class="hb-text">Inversión turística · Sevilla prime · Rentabilidad verificada</span></div>
+      <h1>Sevilla.<br>La rentabilidad<br>que no <em>improvisa.</em></h1>
+      <p>Activos turísticos prime gestionados con datos, criterio y track record verificable. Para inversores que exigen resultados, no promesas.</p>
+      <div class="hero-btns">
+        <button class="hbtn-p">Ver proyectos disponibles →</button>
+        <button class="hbtn-s">Descargar dossier</button>
+      </div>
+      <div class="stats-row">
+        <div class="stat-bl"><div class="stat-n">11<span>,6%</span></div><div class="stat-l">Rentabilidad bruta · Proy. Adolfo Suárez</div></div>
+        <div class="stat-bl"><div class="stat-n">78<span>%</span></div><div class="stat-l">Ocupación media anual</div></div>
+        <div class="stat-bl"><div class="stat-n">92<span>€</span></div><div class="stat-l">ADR medio · Sevilla VUT</div></div>
+        <div class="stat-bl"><div class="stat-n">15<span>+</span></div><div class="stat-l">Proyectos gestionados</div></div>
+      </div>
+    </div>
+    <div class="wm-proj">
+      <div class="wm-proj-label">Proyecto Destacado</div>
+      <div class="proj-card">
+        <div class="proj-img">
+          <div class="proj-img-geo"></div>
+          <span class="ptag">Disponible · Proyecto prime</span>
+          <div class="ptitle">Adolfo Suárez</div>
+          <div class="paddr">Los Remedios, Sevilla · 4 Apartamentos turísticos</div>
+        </div>
+        <div class="proj-data">
+          <div class="proj-metrics">
+            <div class="pm"><div class="pm-v hl">11,6%</div><div class="pm-l">Rentabilidad bruta</div></div>
+            <div class="pm"><div class="pm-v">940.000 €</div><div class="pm-l">Precio total</div></div>
+            <div class="pm"><div class="pm-v">78%</div><div class="pm-l">Ocupación media</div></div>
+            <div class="pm"><div class="pm-v hl">63.790 €</div><div class="pm-l">Beneficio anual est.</div></div>
+          </div>
+          <span class="proj-cta">Solicitar dossier →</span>
+        </div>
+      </div>
+    </div>
+    <div class="wm-disclaimer">Rentabilidades pasadas no garantizan resultados futuros. Proyecciones basadas en histórico 2023–2024. Inversión sujeta a riesgos de mercado.</div>
+  </div>
+</section>
+
+<!-- ════════════ 02 INSTAGRAM ════════════ -->
+<section id="instagram">
+  <div class="eyebrow"><span class="etag">02 · Instagram</span><span class="eline"></span></div>
+  <h2 class="sec-title">@hestia.inmuebles</h2>
+  <p class="sec-sub">Instagram es el canal de descubrimiento del inversor retail y el termómetro de marca para el inversor profesional que te busca antes de llamar. Propuesta: 4 posts/semana, 3 pilares, 1 cadencia.</p>
+
+  <div class="platform-intro">
+    <div class="pi-title">Estrategia de plataforma · Instagram</div>
+    <div class="pi-grid">
+      <div class="pi-col">
+        <div class="pi-platform">Audiencia objetivo</div>
+        <div class="pi-audience">Inversor retail 35–55 años. Busca inspiración, señales de confianza y prueba social antes de contactar. También profesionales que validan la marca.</div>
+        <div class="pi-kpi">KPI: Tasa de guardado · CTR al perfil · DMs entrantes</div>
+      </div>
+      <div class="pi-col">
+        <div class="pi-platform">Tono de voz</div>
+        <div class="pi-audience">Premium y cercano a la vez. Los números hablan solos: no hay que gritar. Copy conciso, datos concretos, CTA claro. Nunca clickbait.</div>
+        <div class="pi-kpi">Referencia: BlackRock + cuenta inmobiliaria aspiracional</div>
+      </div>
+      <div class="pi-col">
+        <div class="pi-platform">Mix de contenido</div>
+        <div class="pi-audience">30% producto · 30% mercado/datos · 25% educativo · 15% equipo/behind scenes. Reels 1×/semana. Stories diarias para engagement.</div>
+        <div class="pi-kpi">Cadencia: Lu/Mi/Vi post feed + Stories diarias</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insta-layout">
+    <!-- Phone -->
+    <div class="phone-frame">
+      <div class="phone-notch"><div class="phone-notch-inner"></div></div>
+      <div class="ig-header">
+        <div class="ig-logo">hestia</div>
+        <div class="ig-icons"><span class="ig-icon">♡</span><span class="ig-icon">✈</span></div>
+      </div>
+      <div class="ig-stories">
+        <div class="ig-story"><div class="ig-story-ring"><div class="ig-story-av">H</div></div><div class="ig-story-name">hestia</div></div>
+        <div class="ig-story"><div class="ig-story-ring" style="background:#ccc;"><div class="ig-story-av" style="background:#333;font-size:8px;">TU</div></div><div class="ig-story-name">Tu cuenta</div></div>
+        <div class="ig-story"><div class="ig-story-ring" style="background:#444;"><div class="ig-story-av" style="background:#333;font-size:8px;">RE</div></div><div class="ig-story-name">rentainv</div></div>
+        <div class="ig-story"><div class="ig-story-ring" style="background:#444;"><div class="ig-story-av" style="background:#333;font-size:8px;">SE</div></div><div class="ig-story-name">sevillainm</div></div>
+      </div>
+      <div class="ig-post">
+        <div class="ig-post-header">
+          <div class="ig-post-profile">
+            <div class="ig-post-av">H</div>
+            <div>
+              <div class="ig-post-name">hestia.inmuebles</div>
+              <div class="ig-post-loc">Los Remedios, Sevilla</div>
+            </div>
+          </div>
+          <div class="ig-post-more">···</div>
+        </div>
+        <div class="ig-post-img">
+          <div class="igpost-1">
+            <div class="igp1-top">
+              <div class="igp1-badge">Proyecto · Los Remedios · Sevilla</div>
+              <div class="igp1-h">Adolfo Suárez:<br>11,6% de rentabilidad<br>bruta. Real.</div>
+            </div>
+            <div class="igp1-body">
+              <div class="igp1-num">63.790<span>€/año</span></div>
+              <div class="igp1-lbl">Beneficio anual estimado</div>
+              <div class="igp1-div"></div>
+              <div class="igp1-rows">
+                <div class="igp1-row"><span class="igp1-row-k">Precio total</span><span class="igp1-row-v">940.000 €</span></div>
+                <div class="igp1-row"><span class="igp1-row-k">Ocupación media</span><span class="igp1-row-v">78%</span></div>
+                <div class="igp1-row"><span class="igp1-row-k">ADR medio</span><span class="igp1-row-v">92 € / noche</span></div>
+                <div class="igp1-row"><span class="igp1-row-k">Nº apartamentos</span><span class="igp1-row-v">4 VUT prime</span></div>
+              </div>
+            </div>
+            <div class="igp1-footer">
+              <span class="igp1-handle">@hestia.inmuebles</span>
+              <span class="igp1-logo">HESTIA</span>
+            </div>
+          </div>
+        </div>
+        <div class="ig-post-actions">
+          <span class="ig-act">🤍</span><span class="ig-act">💬</span><span class="ig-act">↗</span>
+          <span class="ig-save">🔖</span>
+        </div>
+        <div class="ig-likes">2.341 Me gusta</div>
+        <div class="ig-caption"><strong>hestia.inmuebles</strong> ¿Cuánto rinde realmente un apartamento turístico en Sevilla? Aquí los números de nuestro último proyecto. Sin estimaciones optimistas: datos reales de operación 2024. Dossier completo en bio. <span class="hashtags">#InversiónInmobiliaria #Sevilla #ApartamentosTuristicos #RentabilidadReal #Hestia</span></div>
+      </div>
+    </div>
+
+    <!-- Right: 2 more post concepts -->
+    <div class="ig-right">
+
+      <!-- Post 2: Dato de mercado -->
+      <div class="ig-post-card">
+        <div class="ipc-header">
+          <span class="ipc-type">Post feed · Datos de mercado</span>
+          <span class="ipc-format">1080 × 1080 px · Formato cuadrado</span>
+        </div>
+        <div class="ipc-body">
+          <div class="ipc-visual">
+            <div class="vis-data">
+              <div class="vd-top">
+                <div class="vd-eye">Mercado · Sevilla 2024</div>
+                <div class="vd-h">El turismo en Sevilla<br>no frena. Los datos<br>lo confirman.</div>
+              </div>
+              <div class="vd-body">
+                <div class="vd-big">
+                  <div class="vd-big-n">+12%</div>
+                  <div class="vd-big-l">Crecimiento ADR interanual</div>
+                </div>
+                <div class="vd-rows">
+                  <div class="vd-row"><span class="vd-row-k">Pernoctaciones 2024</span><span class="vd-row-v">15,2 millones</span></div>
+                  <div class="vd-row"><span class="vd-row-k">Ocupación VUT prime</span><span class="vd-row-v">74–82%</span></div>
+                  <div class="vd-row"><span class="vd-row-k">ADR medio Sevilla</span><span class="vd-row-v">92 €/noche</span></div>
+                  <div class="vd-row"><span class="vd-row-k">Posición nacional</span><span class="vd-row-v">#3 rentabilidad</span></div>
+                </div>
+              </div>
+              <div class="vd-footer">Fuente: INE · AirDNA 2024 · hestia.inmuebles</div>
+            </div>
+          </div>
+          <div class="ipc-meta">
+            <div class="ipc-title">El mercado habla — nosotros lo traducimos</div>
+            <div class="ipc-caption">Copy propuesto: "En 2024, Sevilla registró 15,2M de pernoctaciones y un crecimiento de ADR del 12%. No es un dato abstracto: es el contexto que hace posible una rentabilidad del 11% en un activo prime. Los números completos, en bio." </div>
+            <div class="ipc-tags">#MercadoInmobiliario #Sevilla #TurismoSevilla #InversionTuristica #DatosInmobiliarios</div>
+          </div>
+        </div>
+        <div class="ipc-rationale">
+          <div class="ipc-rat-label">Por qué este formato</div>
+          <div class="ipc-rat-text">Los posts de datos tienen tasa de guardado 3× superior a los posts de producto. Posicionan a Hestia como fuente de referencia del mercado, no solo como vendedor. Se puede reutilizar en LinkedIn y X con mínima adaptación.</div>
+        </div>
+      </div>
+
+      <!-- Post 3: Educativo / carrusel -->
+      <div class="ig-post-card">
+        <div class="ipc-header">
+          <span class="ipc-type">Carrusel educativo · Slide 1 de 6</span>
+          <span class="ipc-format">1080 × 1080 px · Swipeable</span>
+        </div>
+        <div class="ipc-body">
+          <div class="ipc-visual">
+            <div class="vis-edu">
+              <div class="ve-num-bg">5</div>
+              <div class="ve-title">Claves antes de<br>invertir en un VUT<br>en Sevilla</div>
+              <div class="ve-bar"></div>
+              <div class="ve-list">
+                <div class="ve-item"><span class="ve-in">01</span><span class="ve-it"><strong>Zona prime sobre todo.</strong> Los Remedios, Triana y Centro marcan la diferencia.</span></div>
+                <div class="ve-item"><span class="ve-in">02</span><span class="ve-it"><strong>ADR mínimo viable.</strong> Por debajo de 70€/noche los números no cuadran.</span></div>
+                <div class="ve-item"><span class="ve-in">03</span><span class="ve-it"><strong>Gestión profesional.</strong> El 30% de diferencia en ocupación lo hace el gestor.</span></div>
+                <div class="ve-item"><span class="ve-in">04</span><span class="ve-it"><strong>Licencia VUT vigente.</strong> Regulación endurece. Solo compra con licencia en regla.</span></div>
+                <div class="ve-item"><span class="ve-in">05</span><span class="ve-it"><strong>Proyecta a 10 años.</strong> La plusvalía amplifica la rentabilidad real del activo.</span></div>
+              </div>
+              <div class="ve-footer"><div class="ve-cta">Desliza para profundizar → hestiainmuebles.com</div></div>
+            </div>
+          </div>
+          <div class="ipc-meta">
+            <div class="ipc-title">Carrusel educativo: 6 slides, 6 claves</div>
+            <div class="ipc-caption">El formato carrusel genera el doble de tiempo en pantalla que un post estático. Cada slide desarrolla un punto con datos propios de Hestia. El slide 6 cierra con CTA: "¿Quieres saber si tu perfil encaja? Link en bio."</div>
+            <div class="ipc-tags">#InversionInmobiliaria #ApartamentosTuristicos #GuiaInversion #SevillaPrime #HestiaInversion</div>
+          </div>
+        </div>
+        <div class="ipc-rationale">
+          <div class="ipc-rat-label">Métricas esperadas</div>
+          <div class="ipc-rat-text">Los carruseles educativos tienen en promedio un 3,1× más de alcance orgánico que los posts estáticos en perfiles B2B-aspiracional. Son el formato con mayor tasa de guardado y el que más activa el algoritmo de recomendación de Instagram.</div>
+        </div>
+      </div>
+
+      <!-- Story concept -->
+      <div class="ig-post-card">
+        <div class="ipc-header">
+          <span class="ipc-type">Story · Formato vertical</span>
+          <span class="ipc-format">1080 × 1920 px · 24h</span>
+        </div>
+        <div class="ipc-body">
+          <div class="ipc-visual" style="aspect-ratio:9/16;max-height:240px;">
+            <div class="vis-story">
+              <div class="vs-geo" style="width:200px;height:200px;top:-60px;right:-40px;"></div>
+              <div class="vs-geo" style="width:120px;height:120px;bottom:40px;left:-20px;border-radius:0;transform:rotate(30deg);border-color:rgba(255,255,255,0.04);"></div>
+              <div class="vs-content">
+                <div class="vs-pre">Dato de hoy · Sevilla</div>
+                <div class="vs-big">11,6%<br>de <em>rentabilidad</em><br>bruta.</div>
+                <div class="vs-sub">Proyecto Adolfo Suárez<br>Los Remedios · 4 apts. turísticos</div>
+                <div class="vs-cta-bar"><div class="vs-cta-text">Desliza arriba para el dossier completo</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="ipc-meta">
+            <div class="ipc-title">Stories: canal de activación diaria</div>
+            <div class="ipc-caption">Las Stories de datos funcionan como micro-contenido de alta frecuencia. Una cifra por día, con link directo al dossier. Sticker "Pregúntame" en días de Q&A del mercado. Encuestas de perfil de inversor para segmentación.</div>
+            <div class="ipc-tags">Sin hashtags en Stories · CTR al link > 8% objetivo</div>
+          </div>
+        </div>
+        <div class="ipc-rationale">
+          <div class="ipc-rat-label">Función estratégica</div>
+          <div class="ipc-rat-text">Las Stories son el canal de calificación de leads antes de que contacten. Un inversor que sigue las Stories durante 2 semanas ya conoce los productos, los números y el tono. Cuando llama, llega pre-convencido.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ 03 LINKEDIN ════════════ -->
+<section id="linkedin">
+  <div class="eyebrow"><span class="etag">03 · LinkedIn</span><span class="eline"></span></div>
+  <h2 class="sec-title">Thought leadership<br>en LinkedIn</h2>
+  <p class="sec-sub">LinkedIn es donde el inversor profesional e institucional valida a sus interlocutores. El objetivo no es vender — es ser la voz de referencia sobre inversión turística en Sevilla.</p>
+
+  <div class="platform-intro">
+    <div class="pi-title">Estrategia de plataforma · LinkedIn</div>
+    <div class="pi-grid">
+      <div class="pi-col">
+        <div class="pi-platform">Audiencia objetivo</div>
+        <div class="pi-audience">Family offices, inversores institucionales, gestores de patrimonio, promotores. Ticket medio > 500K€. Toman decisiones lentas, basadas en credenciales y confianza.</div>
+        <div class="pi-kpi">KPI: Impresiones orgánicas · Seguidores de empresa · InMails entrantes</div>
+      </div>
+      <div class="pi-col">
+        <div class="pi-platform">Enfoque de contenido</div>
+        <div class="pi-audience">Análisis de mercado firmado por los fundadores. Opinión experta, nunca comercial. El producto aparece como ejemplo de tesis, nunca como protagonista.</div>
+        <div class="pi-kpi">Ratio: 80% análisis de mercado / 20% producto</div>
+      </div>
+      <div class="pi-col">
+        <div class="pi-platform">Cadencia</div>
+        <div class="pi-audience">2 posts/semana: martes análisis de mercado (perfil personal de los fundadores) + jueves actualización empresa. Newsletter mensual "Hestia Insights" desde LinkedIn.</div>
+        <div class="pi-kpi">Objetivo: 1.000 seguidores empresa en 90 días</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="li-layout">
+
+    <!-- Post 1: Thought leadership del fundador -->
+    <div class="li-card">
+      <div class="li-card-header">
+        <div class="li-av">JA</div>
+        <div>
+          <div class="li-profile-name">José Aycart Almagro</div>
+          <div class="li-profile-title">Cofundador · Hestia Inversión Patrimonial · Inversión turística en Sevilla</div>
+          <div class="li-profile-time">2 días · 🌐</div>
+        </div>
+        <div class="li-follow">+ Seguir</div>
+      </div>
+      <div class="li-body">
+        <div class="li-text">
+          En 2024, los activos de VUT en zonas prime de Sevilla generaron rentabilidades brutas de entre el <span class="li-highlight">9% y el 13%</span>. En el mismo período, la rentabilidad media del bono del Estado español a 10 años fue del 3,2%.<br><br>
+          La diferencia no es magia. Es resultado de tres factores que los inversores institucionales saben leer bien, pero que muchos particulares aún no tienen en el radar:<br><br>
+          <strong>1. Sevilla tiene una base turística estructural, no estacional.</strong> 15,2 millones de pernoctaciones en 2024, distribuidas en 10 meses del año. Eso da una curva de ocupación muy distinta a las de sol y playa.<br><br>
+          <strong>2. La regulación está comprimiendo la oferta nueva.</strong> Cada licencia VUT que no se concede es un punto de ocupación más para los activos existentes. El mercado está cerrando la entrada de competencia.<br><br>
+          <strong>3. El RevPAR de Sevilla lleva cuatro años en ascenso.</strong> No como anomalía post-COVID, sino como tendencia sostenida ligada al posicionamiento de la ciudad como destino cultural de alto gasto.<br><br>
+          ¿Significa esto que cualquier apartamento en Sevilla es una buena inversión? No. La diferencia entre un activo que genera un 8% y uno que genera un 12% está en la zona, la gestión y el posicionamiento en plataformas.<br><br>
+          Es lo que hacemos en Hestia. Los datos están en el <span class="li-link">enlace del comentario</span>.
+        </div>
+      </div>
+      <div class="li-image">
+        <div class="li-img-logo">HESTIA · Sevilla 2024</div>
+        <div class="li-img-content">
+          <div class="li-img-stat"><div class="li-img-num">11<span>%</span></div><div class="li-img-lbl">Rentab. bruta media</div></div>
+          <div class="li-img-stat"><div class="li-img-num">78<span>%</span></div><div class="li-img-lbl">Ocupación prime</div></div>
+          <div class="li-img-stat"><div class="li-img-num">15<span>M</span></div><div class="li-img-lbl">Pernoctaciones</div></div>
+          <div class="li-img-stat"><div class="li-img-num">+12<span>%</span></div><div class="li-img-lbl">ADR interanual</div></div>
+        </div>
+      </div>
+      <div class="li-reactions">
+        <div class="li-react-count">👍❤️💡 347 · 28 comentarios · 61 reposts</div>
+        <div class="li-react-row">
+          <div class="li-react-btn">👍 Me gusta</div>
+          <div class="li-react-btn">💬 Comentar</div>
+          <div class="li-react-btn">🔁 Compartir</div>
+        </div>
+      </div>
+      <div class="li-rationale">
+        <div class="li-rat-l">Rationale estratégico</div>
+        <div class="li-rat-t">Firmado por el fundador, no por la empresa: el algoritmo de LinkedIn favorece los perfiles personales. Este tipo de post de análisis genera 4× más impresiones orgánicas que un post de empresa. El CTA ("enlace en el comentario") evita que LinkedIn penalice las publicaciones con links externos en el cuerpo.</div>
+      </div>
+    </div>
+
+    <!-- Post 2: Company update -->
+    <div class="li-card">
+      <div class="li-card-header">
+        <div class="li-av" style="border-radius:4px;">H</div>
+        <div>
+          <div class="li-profile-name">Hestia Inversión Patrimonial</div>
+          <div class="li-profile-title">Inversión inmobiliaria · 1.240 seguidores</div>
+          <div class="li-profile-time">5 días · 🌐</div>
+        </div>
+        <div class="li-follow">+ Seguir</div>
+      </div>
+      <div class="li-body">
+        <div class="li-text">
+          <strong>Proyecto Adolfo Suárez: dossier completo disponible.</strong><br><br>
+          4 apartamentos turísticos en Los Remedios (Sevilla). <span class="li-highlight">940.000 €. 11,6% de rentabilidad bruta. 63.790 €/año de beneficio estimado.</span><br><br>
+          Lo que incluye el dossier:<br>
+          → Análisis de ocupación histórica (2022–2024)<br>
+          → Comparativa de ADR por zona en Sevilla<br>
+          → Proyección de RevPAR a 5 y 10 años<br>
+          → Estructura fiscal VUT en Andalucía<br>
+          → Escenario de salida y valoración de plusvalía<br><br>
+          Disponible para inversores cualificados. Contacto directo en el primer comentario.
+        </div>
+      </div>
+      <div class="li-tl-img">
+        <div class="li-tl-logo">Proyecto Adolfo Suárez · Los Remedios</div>
+        <div class="li-tl-bar"></div>
+        <div class="li-tl-quote">"La rentabilidad no es una promesa.<br>Es el resultado de elegir bien<br>el activo, la zona y el gestor."</div>
+        <div class="li-tl-source">José Aycart · Cofundador Hestia</div>
+      </div>
+      <div class="li-reactions">
+        <div class="li-react-count">👍❤️ 189 · 14 comentarios · 32 reposts</div>
+        <div class="li-react-row">
+          <div class="li-react-btn">👍 Me gusta</div>
+          <div class="li-react-btn">💬 Comentar</div>
+          <div class="li-react-btn">🔁 Compartir</div>
+        </div>
+      </div>
+      <div class="li-rationale">
+        <div class="li-rat-l">Diferencia clave vs. Instagram</div>
+        <div class="li-rat-t">En LinkedIn el copy puede ser más largo y técnico: la audiencia lo lee. El dossier como lead magnet funciona como cualificador de leads: solo quien tiene intención real descarga un PDF de 20 páginas. Esto filtra el funnel y reduce el tiempo de venta.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════ 04 X / TWITTER ════════════ -->
+<section id="xtwitter">
+  <div class="eyebrow"><span class="etag">04 · X / Twitter</span><span class="eline"></span></div>
+  <h2 class="sec-title">Thread de datos<br>en X</h2>
+  <p class="sec-sub">X es el canal de los inversores early adopter y los profesionales que se informan en tiempo real. Un thread de datos bien ejecutado puede generar 50.000+ impresiones orgánicas sin inversión publicitaria.</p>
+
+  <div class="x-layout">
+
+    <!-- X frame with thread -->
+    <div class="x-frame">
+      <div class="x-header">
+        <div class="x-logo">𝕏</div>
+        <div class="x-header-text">Para ti</div>
+      </div>
+
+      <!-- Tweet 1 -->
+      <div class="x-tweet">
+        <div class="x-tweet-header">
+          <div class="x-av">H</div>
+          <div>
+            <div class="x-name">Hestia Inversión <span style="color:#1d9bf0;">✓</span></div>
+            <div class="x-handle">@HestiaInversion · 2h</div>
+          </div>
+        </div>
+        <div class="x-text">
+          🧵 El mercado VUT de Sevilla en 2024: un thread de datos para inversores que quieren rentabilidad real, no titulares.<br><br>
+          <strong>La tesis:</strong> mientras Barcelona cierra, Sevilla abre.<br><br>
+          (1/6)
+        </div>
+        <div class="x-card">
+          <div class="x-card-img">
+            <div class="x-card-data">
+              <div><div class="x-cd-num">11<span>%</span></div><div class="x-cd-lbl">Rentab. bruta</div></div>
+              <div><div class="x-cd-num">78<span>%</span></div><div class="x-cd-lbl">Ocupación</div></div>
+              <div><div class="x-cd-num">+12<span>%</span></div><div class="x-cd-lbl">ADR YoY</div></div>
+            </div>
+          </div>
+          <div class="x-card-footer">
+            <div class="x-card-domain">hestiainmuebles.com</div>
+            <div class="x-card-logo">HESTIA</div>
+          </div>
+        </div>
+        <div class="x-actions">
+          <span class="x-act">💬 47</span>
+          <span class="x-act">🔁 183</span>
+          <span class="x-act">❤️ 621</span>
+          <span class="x-act">📊 18,4K</span>
+        </div>
+      </div>
+
+      <div class="x-thread-line"></div>
+
+      <!-- Tweet 2 -->
+      <div class="x-tweet">
+        <div class="x-tweet-header">
+          <div class="x-av">H</div>
+          <div>
+            <div class="x-name">Hestia Inversión <span style="color:#1d9bf0;">✓</span></div>
+            <div class="x-handle">@HestiaInversion · 2h</div>
+          </div>
+        </div>
+        <div class="x-text">
+          <strong>Por qué Sevilla y no Barcelona o Madrid:</strong><br><br>
+          → Barcelona: 0 licencias nuevas desde 2021. Precio de compra ×3 respecto a 2018.<br>
+          → Madrid: precio de compra alto + rendimiento turístico bajo en zonas accesibles.<br>
+          → Sevilla: precio controlado + <span class="xnum">15,2M pernoctaciones</span> + regulación gestionable si tienes licencia.<br><br>
+          La ventana de entrada aún está abierta. (2/6)
+        </div>
+        <div class="x-actions">
+          <span class="x-act">💬 22</span>
+          <span class="x-act">🔁 94</span>
+          <span class="x-act">❤️ 318</span>
+          <span class="x-act">📊 12,1K</span>
+        </div>
+      </div>
+
+      <div class="x-thread-line"></div>
+
+      <!-- Tweet 3 -->
+      <div class="x-tweet">
+        <div class="x-tweet-header">
+          <div class="x-av">H</div>
+          <div>
+            <div class="x-name">Hestia Inversión <span style="color:#1d9bf0;">✓</span></div>
+            <div class="x-handle">@HestiaInversion · 2h</div>
+          </div>
+        </div>
+        <div class="x-text">
+          <strong>Los números de nuestro último proyecto (datos reales 2024):</strong><br><br>
+          📍 Los Remedios · 4 apartamentos VUT<br>
+          💶 Precio: <span class="xnum">940.000 €</span><br>
+          📈 Rentabilidad bruta: <span class="xnum">11,6%</span><br>
+          🛏️ Ocupación media: <span class="xnum">78%</span><br>
+          💰 Beneficio anual: <span class="xnum">~63.790 €</span><br><br>
+          Dossier completo en <span class="xlink">hestiainmuebles.com</span> (6/6)
+        </div>
+        <div class="x-actions">
+          <span class="x-act">💬 38</span>
+          <span class="x-act">🔁 211</span>
+          <span class="x-act">❤️ 489</span>
+          <span class="x-act">📊 9,7K</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: strategy -->
+    <div class="x-right">
+      <div class="x-strategy-card">
+        <div class="x-sc-title">Por qué un thread, no un post</div>
+        <p style="font-family:'Roboto',sans-serif;font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:16px;">El thread es el formato de mayor alcance orgánico en X para contenido de inversión. El primer tweet actúa como titular: si engancha, el algoritmo lo amplifica. Cada tweet siguiente filtra la audiencia hacia intención de compra.</p>
+        <div class="strategy-row" style="margin-bottom:0;">
+          <div class="strategy-card">
+            <div class="sc-label">Tweet 1</div>
+            <div class="sc-value">Hook con tesis. El dato más impactante. Despierta curiosidad.</div>
+          </div>
+          <div class="strategy-card">
+            <div class="sc-label">Tweets 2–5</div>
+            <div class="sc-value">Desarrollo: por qué Sevilla, zonas, gestión, regulación. Cada uno shareable solo.</div>
+          </div>
+          <div class="strategy-card">
+            <div class="sc-label">Tweet 6</div>
+            <div class="sc-value">Datos reales del proyecto + CTA al dossier. La prueba que cierra el argumento.</div>
+          </div>
+        </div>
+      </div>
+      <div class="x-strategy-card">
+        <div class="x-sc-title">Thread completo · Vista previa</div>
+        <div class="x-thread-preview">
+          <div class="x-tp-item">
+            <div class="x-tp-left"><div class="x-tp-av-sm">H</div><div class="x-tp-line"></div></div>
+            <div class="x-tp-content">
+              <div class="x-tp-num">1/6 · Hook</div>
+              <div class="x-tp-text">🧵 El mercado VUT de Sevilla en 2024. La tesis: mientras Barcelona cierra, Sevilla abre.</div>
+            </div>
+          </div>
+          <div class="x-tp-item">
+            <div class="x-tp-left"><div class="x-tp-av-sm">H</div><div class="x-tp-line"></div></div>
+            <div class="x-tp-content">
+              <div class="x-tp-num">2/6 · Por qué Sevilla vs. competidores</div>
+              <div class="x-tp-text">Comparativa directa con Barcelona y Madrid. Datos de precio, ocupación y regulación.</div>
+            </div>
+          </div>
+          <div class="x-tp-item">
+            <div class="x-tp-left"><div class="x-tp-av-sm">H</div><div class="x-tp-line"></div></div>
+            <div class="x-tp-content">
+              <div class="x-tp-num">3/6 · Las zonas que funcionan</div>
+              <div class="x-tp-text">Los Remedios, Triana, Centro. Datos de ADR y ocupación por barrio.</div>
+            </div>
+          </div>
+          <div class="x-tp-item">
+            <div class="x-tp-left"><div class="x-tp-av-sm">H</div><div class="x-tp-line"></div></div>
+            <div class="x-tp-content">
+              <div class="x-tp-num">4/6 · El factor gestión</div>
+              <div class="x-tp-text">La diferencia entre 8% y 12% de rentabilidad no es el activo. Es la gestión.</div>
+            </div>
+          </div>
+          <div class="x-tp-item">
+            <div class="x-tp-left"><div class="x-tp-av-sm">H</div><div class="x-tp-line"></div></div>
+            <div class="x-tp-content">
+              <div class="x-tp-num">5/6 · Regulación sin alarmismo</div>
+              <div class="x-tp-text">Cómo navegar la regulación VUT en Andalucía. La oportunidad en la restricción.</div>
+            </div>
+          </div>
+          <div class="x-tp-item">
+            <div class="x-tp-left"><div class="x-tp-av-sm">H</div></div>
+            <div class="x-tp-content">
+              <div class="x-tp-num">6/6 · Datos reales + CTA</div>
+              <div class="x-tp-text">Proyecto Adolfo Suárez: 11,6% bruta, 940K€, 63.790€/año. Dossier en enlace.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="x-strategy-card">
+        <div class="x-sc-title">Métricas objetivo · 30 días</div>
+        <div class="strategy-row" style="margin-bottom:0;">
+          <div class="strategy-card"><div class="sc-label">Impresiones</div><div class="sc-value">50.000+ por thread de alto rendimiento</div></div>
+          <div class="strategy-card"><div class="sc-label">Seguidores</div><div class="sc-value">+500 nuevos en 90 días</div></div>
+          <div class="strategy-card"><div class="sc-label">CTR dossier</div><div class="sc-value">>2,5% desde X hacia web</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════ 05 BLOG ════════════ -->
+<section id="blog">
+  <div class="eyebrow" style="padding:0 72px;"><span class="etag light">05 · Blog editorial</span><span class="eline dark"></span></div>
+  <article class="blog-article">
+    <div class="btags"><span class="btag">Inversión turística</span><span class="btag">Sevilla · Mercado</span><span class="btag">Análisis 2025</span></div>
+    <h1 class="blog-h">Sevilla 2025: por qué el mercado de VUT sigue siendo la inversión más sólida del sur de Europa</h1>
+    <p class="blog-dek">Mientras otros mercados muestran señales de saturación, Sevilla encadena su tercer año consecutivo de crecimiento en ADR y ocupación. Estos son los datos que lo explican.</p>
+    <div class="blog-meta">
+      <div class="b-author">
+        <div class="b-av">H</div>
+        <div><div class="b-name">Equipo Hestia · Análisis de Mercado</div><div class="b-role">hestiainmuebles.com</div></div>
+      </div>
+      <div class="b-sep"></div>
+      <div class="b-meta">15 junio 2025</div>
+      <div class="b-sep"></div>
+      <div class="b-meta">⏱ 7 min de lectura</div>
+      <div class="b-sep"></div>
+      <div class="b-meta">SEO target: "invertir en apartamento turístico Sevilla"</div>
+    </div>
+    <div class="blog-hero">
+      <div class="bhg1"></div><div class="bhg2"></div>
+      <div class="blog-hero-quote">"Sevilla no es una moda.<br>Es una <em>tesis de inversión.</em>"</div>
+    </div>
+    <div class="blog-body">
+      <p>En 2024, Sevilla registró <strong>15,2 millones de pernoctaciones</strong> en alojamientos turísticos, un 8,3% más que el año anterior. El ADR en apartamentos prime creció un 12% interanual, alcanzando los 92€. La tasa de ocupación media de las VUT bien gestionadas se mantuvo entre el 74% y el 82%.</p>
+      <p>Estos no son datos de un boom puntual. Son la consolidación de una tendencia estructural con causas fundamentales que no desaparecerán en el corto plazo.</p>
+      <div class="data-box">
+        <div class="db-title">Datos clave · Sevilla 2024 · Fuente: INE, AirDNA, Hestia Análisis</div>
+        <div class="db-grid">
+          <div><div class="db-num">15<span class="acc">,2M</span></div><div class="db-lbl">Pernoctaciones</div></div>
+          <div><div class="db-num">92<span class="acc">€</span></div><div class="db-lbl">ADR medio prime</div></div>
+          <div><div class="db-num">78<span class="acc">%</span></div><div class="db-lbl">Ocupación media VUT</div></div>
+          <div><div class="db-num">+<span class="acc">12</span>%</div><div class="db-lbl">Crecimiento ADR</div></div>
+        </div>
+      </div>
+      <h2>Por qué Sevilla no es como Barcelona o Madrid</h2>
+      <p>Barcelona lleva años con legislación restrictiva que ha comprimido la oferta de VUT. Madrid ha experimentado una escalada de precios de compra que ha erosionado los márgenes. <strong>Sevilla opera en otro escenario: precio de compra todavía razonable en zonas prime, base turística que crece en volumen y ticket medio, y entorno regulatorio manejable para quienes actúan con licencias en regla.</strong></p>
+      <div class="pull-q"><p>"La combinación de precio de entrada controlado y ADR en ascenso crea una ventana de rentabilidad que los mercados maduros ya cerraron hace tiempo."</p></div>
+      <h2>Las zonas que marcan la diferencia</h2>
+      <table class="zone-tbl">
+        <thead><tr><th>Zona</th><th>ADR medio</th><th>Ocupación</th><th>Rentab. bruta est.</th><th>Posicionamiento</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Los Remedios</strong></td><td>92–105 €</td><td>76–82%</td><td>11–13%</td><td><span class="zbadge zb-a">Alta demanda</span></td></tr>
+          <tr><td><strong>Triana</strong></td><td>88–98 €</td><td>74–80%</td><td>10–12%</td><td><span class="zbadge zb-a">Alta demanda</span></td></tr>
+          <tr><td><strong>Centro histórico</strong></td><td>95–120 €</td><td>80–88%</td><td>9–11%</td><td><span class="zbadge zb-a">Alta demanda</span></td></tr>
+          <tr><td><strong>Macarena</strong></td><td>72–85 €</td><td>65–72%</td><td>8–10%</td><td><span class="zbadge zb-m">Emergente</span></td></tr>
+        </tbody>
+      </table>
+      <div class="blog-cta">
+        <div><h4>¿Buscas activos con rentabilidad verificada en Sevilla?</h4><p>Dossier completo con datos reales de ocupación, ADR y proyección a 10 años.</p></div>
+        <span class="blog-cta-btn">Solicitar dossier →</span>
+      </div>
+      <p class="blog-disclaimer">Datos basados en proyecciones históricas 2023–2024. Las rentabilidades pasadas no garantizan resultados futuros. Este artículo es informativo y no constituye asesoramiento de inversión. Consulta con un asesor cualificado.</p>
+    </div>
+  </article>
+</section>
+
+<!-- ════════════ 06 EMAIL ════════════ -->
+<section id="email">
+  <div class="eyebrow"><span class="etag">06 · Email marketing</span><span class="eline"></span></div>
+  <h2 class="sec-title">Secuencia de nurturing</h2>
+  <p class="sec-sub">Email #1 de 3 — se activa al descargar el dossier o rellenar el formulario de contacto. Objetivo: calificar el lead, establecer credenciales y generar una primera cita. Diseñado para Mailchimp o HubSpot.</p>
+
+  <div class="email-frame">
+    <div class="email-topbar">
+      <div class="gmail-l">M<b>G</b></div>
+      <div class="email-info">
+        <div class="email-subject-bar">Bienvenido al área de inversores de Hestia — su guía de inicio</div>
+        <div class="email-from-bar">inversores@hestiainmuebles.com → Carlos Cardoso &lt;ccardoso19@hotmail.com&gt;</div>
+      </div>
+    </div>
+    <div class="email-body">
+      <div class="email-card">
+        <div class="em-header">
+          <div><div class="em-logo">HESTIA</div><div class="em-logo-sub">Inversión Patrimonial</div></div>
+          <div class="em-header-tag">Área de Inversores</div>
+        </div>
+        <div class="em-hero"><h2>Bienvenido a Hestia.<br>Su rentabilidad nos importa.</h2></div>
+        <div class="em-content">
+          <div class="em-greeting">Estimado Carlos,</div>
+          <p class="em-p">Gracias por su interés en Hestia Inversión Patrimonial. Ha dado el primer paso hacia un tipo de inversión que combina lo mejor del activo inmobiliario con la rentabilidad del mercado turístico: predecible, tangible y con cifras verificables.</p>
+          <p class="em-p">Nuestro último proyecto en Los Remedios (Sevilla) generó una rentabilidad bruta del <strong>11,6%</strong> con una ocupación media del 78% y un ADR de 92€/noche. Los datos completos están en el dossier que adjuntamos.</p>
+          <div class="em-metrics">
+            <div class="em-mc"><div class="em-mv"><span class="a">11,6</span>%</div><div class="em-ml">Rentabilidad bruta</div></div>
+            <div class="em-mc"><div class="em-mv">78<span class="a">%</span></div><div class="em-ml">Ocupación media</div></div>
+            <div class="em-mc"><div class="em-mv">15<span class="a">+</span></div><div class="em-ml">Proyectos gestionados</div></div>
+          </div>
+          <p class="em-p">En los próximos días recibirá también nuestra <strong>Guía de Inversión en VUT Sevilla 2025</strong> y, si lo desea, podemos agendar una llamada de 30 minutos sin compromiso para revisar si su perfil encaja con nuestros proyectos.</p>
+          <div class="em-cta">
+            <a href="#" class="em-btn">Descargar dossier completo →</a>
+            <div class="em-hint">O agenda su llamada directamente en hestiainmuebles.com</div>
+          </div>
+          <div class="em-div"></div>
+          <p class="em-p" style="font-size:11px;color:#888;">José Aycart Almagro & Juan José Laguna Álvarez<br>Fundadores, Hestia Inversión Patrimonial<br>+34 954 XXX XXX · inversores@hestiainmuebles.com</p>
+        </div>
+        <div class="em-footer">
+          <div class="em-foot-text">Rentabilidades pasadas no garantizan resultados futuros. Inversión sujeta a riesgos de mercado.<br>Recibió este email por haber solicitado información en hestiainmuebles.com.</div>
+          <div class="em-foot-links"><a href="#">Darse de baja</a><a href="#">Privacidad</a><a href="#">hestiainmuebles.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="next-steps">
+    <div class="ns-title">Plan de 90 días para implementar este ecosistema</div>
+    <div class="ns-grid">
+      <div class="ns-item">
+        <div class="ns-num">01</div>
+        <div class="ns-label">Semana 1–2 · Quick wins</div>
+        <div class="ns-desc">Arreglar CTA roto. Publicar primeros 6 posts con sistema de pilares. Instalar PixelFB + GA4. Configurar secuencia de email en Mailchimp.</div>
+      </div>
+      <div class="ns-item">
+        <div class="ns-num">02</div>
+        <div class="ns-label">Mes 2 · Tracción</div>
+        <div class="ns-desc">Lanzar campaña SEM para keywords de inversión Sevilla. Publicar primer thread en X. Activar LinkedIn personal de los fundadores. Subir proyectos desde preview a publicado.</div>
+      </div>
+      <div class="ns-item">
+        <div class="ns-num">03</div>
+        <div class="ns-label">Mes 3 · Escala</div>
+        <div class="ns-desc">Hub de contenidos (3 artículos/mes). Versión EN de la web. Área privada de inversores. Primer informe de KPIs con datos reales vs. objetivos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === '#' + id) item.classList.add('active');
+      });
+    }
+  });
+}, { threshold: 0.25 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
