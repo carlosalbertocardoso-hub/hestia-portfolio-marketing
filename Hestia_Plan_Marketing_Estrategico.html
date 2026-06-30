@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Marketing Estratégico — Hestia Inversión Patrimonial</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Rubik:wght@400;500;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #101010;
+    --black2: #161616;
+    --red: #9C231F;
+    --red-dark: #861705;
+    --red-glow: rgba(156,35,31,0.18);
+    --white: #FFFFFF;
+    --grey: #999999;
+    --grey2: #555555;
+    --light-bg: #1c1c1c;
+    --border: rgba(255,255,255,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Rubik', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(16,16,16,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--grey); font-size: 13px; text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-badge { background: var(--red); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.05em; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 120px 80px 80px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 40%, rgba(156,35,31,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(156,35,31,0.06) 0%, transparent 60%),
+      linear-gradient(180deg, #101010 0%, #0a0a0a 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--white) 1px, transparent 1px), linear-gradient(90deg, var(--white) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-eyebrow {
+    position: relative;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red);
+    font-weight: 600;
+  }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--red); }
+  .hero h1 {
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--red); font-style: normal; }
+  .hero-sub {
+    position: relative;
+    font-size: 17px; color: var(--grey); max-width: 600px; margin-bottom: 48px; font-weight: 400;
+  }
+  .hero-meta {
+    position: relative;
+    display: flex; gap: 48px; align-items: flex-start;
+  }
+  .hero-stat { text-align: left; }
+  .hero-stat .num { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 700; color: var(--white); }
+  .hero-stat .num span { color: var(--red); }
+  .hero-stat .label { font-size: 12px; color: var(--grey); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+  .hero-divider { width: 1px; height: 60px; background: var(--border); align-self: center; }
+  .scroll-hint {
+    position: absolute; bottom: 40px; right: 80px;
+    font-size: 11px; color: var(--grey2); letter-spacing: 0.1em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .scroll-hint::after { content: '↓'; font-size: 16px; animation: bounce 1.5s infinite; }
+  @keyframes bounce { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(6px) } }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 80px; border-bottom: 1px solid var(--border); }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--red); font-weight: 600; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--red); }
+  h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.1; margin-bottom: 16px;
+  }
+  h2 em { color: var(--red); font-style: normal; }
+  .section-intro { font-size: 16px; color: var(--grey); max-width: 600px; margin-bottom: 64px; }
+
+  /* ── DIAGNÓSTICO ── */
+  .diag-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; }
+  .diag-card {
+    background: var(--light-bg);
+    padding: 40px 36px;
+    position: relative; overflow: hidden;
+    transition: background .25s;
+  }
+  .diag-card:hover { background: #222; }
+  .diag-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--red); transform: scaleX(0); transform-origin: left;
+    transition: transform .35s ease;
+  }
+  .diag-card:hover::before { transform: scaleX(1); }
+  .diag-num { font-family: 'Inter', sans-serif; font-size: 52px; font-weight: 900; color: var(--red); opacity: 0.18; line-height: 1; margin-bottom: 16px; }
+  .diag-icon { font-size: 28px; margin-bottom: 16px; }
+  .diag-title { font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .diag-text { font-size: 14px; color: var(--grey); line-height: 1.7; }
+  .diag-tag { display: inline-block; margin-top: 16px; font-size: 11px; background: rgba(156,35,31,0.15); color: #f88; padding: 3px 10px; border-radius: 4px; font-weight: 600; letter-spacing: 0.05em; }
+
+  /* ── PROPUESTAS TABS ── */
+  .tabs-nav { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 56px; overflow-x: auto; }
+  .tab-btn {
+    padding: 14px 28px;
+    font-family: 'Rubik', sans-serif; font-size: 14px; font-weight: 500;
+    color: var(--grey); border: none; background: transparent; cursor: pointer;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    transition: all .2s; white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--white); }
+  .tab-btn.active { color: var(--white); border-bottom-color: var(--red); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeIn .3s ease; }
+  @keyframes fadeIn { from{ opacity:0; transform: translateY(8px) } to{ opacity:1; transform: translateY(0) } }
+
+  /* ── PROPUESTA CARD ── */
+  .prop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .prop-card {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 2px; padding: 36px;
+  }
+  .prop-card.full { grid-column: 1 / -1; }
+  .prop-card .badge {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 2px; margin-bottom: 20px;
+  }
+  .badge-quick { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .badge-mid { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .badge-strategic { background: rgba(156,35,31,0.15); color: #f87171; }
+  .prop-card h3 { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+  .prop-card p { font-size: 14px; color: var(--grey); line-height: 1.75; margin-bottom: 20px; }
+  .prop-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .prop-list li { font-size: 14px; color: #ccc; display: flex; gap: 10px; align-items: flex-start; }
+  .prop-list li::before { content: '→'; color: var(--red); flex-shrink: 0; font-weight: 700; margin-top: 1px; }
+  .prop-impact { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 24px; }
+  .prop-impact-item { font-size: 12px; }
+  .prop-impact-item .val { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: #4ade80; }
+  .prop-impact-item .lbl { color: var(--grey); margin-top: 2px; }
+
+  /* ── FUNNEL ── */
+  .funnel { max-width: 700px; margin: 0 auto; }
+  .funnel-step {
+    display: flex; gap: 24px; align-items: flex-start; padding: 28px 32px;
+    background: var(--light-bg); border: 1px solid var(--border);
+    position: relative; margin-bottom: 2px;
+    clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
+  }
+  .funnel-step:nth-child(1) { clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%); }
+  .funnel-step:nth-child(2) { clip-path: polygon(3% 0, 97% 0, 96% 100%, 4% 100%); }
+  .funnel-step:nth-child(3) { clip-path: polygon(4% 0, 96% 0, 95% 100%, 5% 100%); }
+  .funnel-step:nth-child(4) { clip-path: polygon(5% 0, 95% 0, 94% 100%, 6% 100%); }
+  .funnel-step:nth-child(5) { clip-path: polygon(6% 0, 94% 0, 50% 100%, 50% 100%); }
+  .funnel-num { font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; color: var(--red); opacity: 0.3; min-width: 40px; }
+  .funnel-content h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .funnel-content p { font-size: 13px; color: var(--grey); }
+  .funnel-tag { margin-left: auto; font-size: 11px; color: var(--red); font-weight: 600; white-space: nowrap; padding-top: 4px; }
+
+  /* ── PLAN 90 DÍAS ── */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--red) 0%, rgba(156,35,31,0.1) 100%); }
+  .phase { margin-bottom: 56px; position: relative; }
+  .phase-dot { position: absolute; left: -44px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 4px rgba(156,35,31,0.2); }
+  .phase-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px; }
+  .phase-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--red); text-transform: uppercase; }
+  .phase-title { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 600; }
+  .phase-weeks { font-size: 12px; color: var(--grey2); }
+  .phase-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .phase-item {
+    background: var(--light-bg); border: 1px solid var(--border);
+    padding: 20px; border-radius: 2px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .phase-item-icon { font-size: 18px; flex-shrink: 0; }
+  .phase-item h5 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .phase-item p { font-size: 12px; color: var(--grey); }
+
+  /* ── KPIS ── */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2px; }
+  .kpi-card {
+    background: var(--light-bg); padding: 40px 32px;
+    border-top: 2px solid transparent;
+    transition: border-color .2s;
+  }
+  .kpi-card:hover { border-color: var(--red); }
+  .kpi-num {
+    font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 700;
+    color: var(--white); line-height: 1; margin-bottom: 8px;
+  }
+  .kpi-num span { color: var(--red); }
+  .kpi-label { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .kpi-sub { font-size: 12px; color: var(--grey); }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a0a09 50%, #0d0d0d 100%);
+    text-align: center; padding: 120px 80px;
+  }
+  .closing h2 { font-size: clamp(32px, 4vw, 56px); margin-bottom: 20px; }
+  .closing p { font-size: 18px; color: var(--grey); max-width: 600px; margin: 0 auto 48px; }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--red); color: #fff; padding: 16px 40px;
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+    letter-spacing: 0.05em; text-decoration: none; border: none; cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+  .cta-btn:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .author-block { margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--border); }
+  .author-block p { font-size: 13px; color: var(--grey2); }
+  .author-block strong { color: var(--grey); }
+
+  /* ── SIDEBAR PILL ── */
+  .floating-nav {
+    position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 8px; z-index: 90;
+  }
+  .fnav-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--grey2); border: none; cursor: pointer;
+    transition: all .2s; padding: 0;
+  }
+  .fnav-dot.active, .fnav-dot:hover { background: var(--red); transform: scale(1.4); }
+
+  /* ── CONTENT PILLARS ── */
+  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .pillar {
+    background: var(--light-bg); padding: 40px 32px;
+    border-top: 3px solid transparent; transition: border-color .25s;
+  }
+  .pillar:hover { border-color: var(--red); }
+  .pillar-icon { font-size: 32px; margin-bottom: 16px; }
+  .pillar h4 { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .pillar p { font-size: 13px; color: var(--grey); line-height: 1.75; margin-bottom: 16px; }
+  .pillar-formats { display: flex; flex-wrap: wrap; gap: 6px; }
+  .fmt-tag { font-size: 11px; background: var(--red-glow); color: #f88; padding: 3px 8px; border-radius: 2px; }
+
+  /* ── SEM TABLE ── */
+  .sem-table { width: 100%; border-collapse: collapse; }
+  .sem-table th { text-align: left; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey2); padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .sem-table td { padding: 14px 16px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+  .sem-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .vol-bar { height: 6px; background: var(--red); border-radius: 3px; }
+  .intent-badge { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 2px; }
+  .intent-high { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .intent-mid { background: rgba(251,191,36,0.15); color: #fbbf24; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    section { padding: 60px 24px; }
+    .hero { padding: 80px 24px 60px; }
+    .prop-grid { grid-template-columns: 1fr; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .floating-nav { display: none; }
+    .hero-meta { flex-wrap: wrap; gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Hestia <span>Inversión</span> Patrimonial</div>
+  <ul class="nav-links">
+    <li><a href="#diagnostico">Diagnóstico</a></li>
+    <li><a href="#propuestas">Propuestas</a></li>
+    <li><a href="#captacion">Captación</a></li>
+    <li><a href="#plan90">Plan 90 días</a></li>
+    <li><a href="#kpis">KPIs</a></li>
+  </ul>
+  <div class="nav-badge">Candidatura 2026</div>
+</nav>
+
+<!-- FLOATING NAV -->
+<div class="floating-nav" id="floatingNav">
+  <button class="fnav-dot active" data-target="hero" title="Inicio"></button>
+  <button class="fnav-dot" data-target="diagnostico" title="Diagnóstico"></button>
+  <button class="fnav-dot" data-target="propuestas" title="Propuestas"></button>
+  <button class="fnav-dot" data-target="captacion" title="Captación"></button>
+  <button class="fnav-dot" data-target="plan90" title="Plan 90 días"></button>
+  <button class="fnav-dot" data-target="kpis" title="KPIs"></button>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-eyebrow">Plan Estratégico de Marketing · Sevilla · 2026</div>
+  <h1>Convertir Hestia en la marca de inversión inmobiliaria <em>de referencia</em> en Sevilla.</h1>
+  <p class="hero-sub">Un diagnóstico honesto, propuestas accionables y un plan de 90 días con KPIs medibles. No vengo a ejecutar tareas sueltas — vengo con una hoja de ruta.</p>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <div class="num">5<span>×</span></div>
+      <div class="label">Oportunidades de mejora críticas</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="num">90<span>d</span></div>
+      <div class="label">Para generar impacto medible</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="num">11<span>.6%</span></div>
+      <div class="label">Rentabilidad bruta a vender</div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll para explorar</div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section id="diagnostico">
+  <div class="section-label">01 · Diagnóstico</div>
+  <h2>Lo que falla hoy en <em>hestiainmuebles.com</em></h2>
+  <p class="section-intro">Auditoría de la presencia digital actual. Estos no son problemas menores — son fugas directas de conversión y credibilidad.</p>
+
+  <!-- FORTALEZAS -->
+  <div style="background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.2); padding: 28px 36px; margin-bottom: 40px; border-radius: 2px;">
+    <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #4ade80; text-transform: uppercase; margin-bottom: 16px;">✓ Lo que ya funciona bien — puntos de apoyo del plan</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+      <div style="font-size: 14px; color: #ccc;"><span style="color:#4ade80; font-weight:700;">14M€</span> facturación 2025 (Forbes, Europa Press)</div>
+      <div style="font-size: 14px; color: #ccc;"><span style="color:#4ade80; font-weight:700;">700</span> plazas turísticas en explotación</div>
+      <div style="font-size: 14px; color: #ccc;"><span style="color:#4ade80; font-weight:700;">20+</span> proyectos activos en cartera</div>
+      <div style="font-size: 14px; color: #ccc;"><span style="color:#4ade80; font-weight:700;">Sala de Prensa</span> activa: ABC, Hosteltur, Cuatro TV, Forbes…</div>
+      <div style="font-size: 14px; color: #ccc;"><span style="color:#4ade80; font-weight:700;">Actualidad</span> con publicaciones prácticamente diarias</div>
+      <div style="font-size: 14px; color: #ccc;"><span style="color:#4ade80; font-weight:700;">RRSS</span> en Instagram, LinkedIn y Facebook</div>
+    </div>
+  </div>
+
+  <div style="font-size: 15px; color: var(--grey); margin-bottom: 40px; max-width: 700px; line-height: 1.7;">
+    El problema no es la falta de contenido ni de proyectos — es que <strong style="color:#fff;">todo ese valor está enterrado</strong>. Forbes habla de Hestia, ABC habla de Hestia, Cuatro TV habla de Hestia. La portada no dice nada de eso.
+  </div>
+
+  <div class="diag-grid">
+    <div class="diag-card">
+      <div class="diag-num">01</div>
+      <div class="diag-icon">🏆</div>
+      <div class="diag-title">El homepage no refleja la empresa real</div>
+      <div class="diag-text">La portada dice "gran rentabilidad" sin una sola cifra. Pero la Sala de Prensa habla de 14M€ de facturación, 700 plazas, 30 proyectos, apariciones en Forbes y Cuatro TV. Ese contraste destroza la credibilidad ante el inversor que investiga.</div>
+      <div class="diag-tag">Oportunidad crítica</div>
+    </div>
+    <div class="diag-card">
+      <div class="diag-num">02</div>
+      <div class="diag-icon">🌍</div>
+      <div class="diag-title">Sin versión en inglés</div>
+      <div class="diag-text">Tickets de hasta 4M€ con proyección internacional confirmada. Sin versión EN, el inversor extranjero — que llega por los medios o por referidos — abandona en los primeros 10 segundos. Ningún competidor directo en Sevilla la tiene tampoco: oportunidad de diferenciación.</div>
+      <div class="diag-tag">Mercado no cubierto</div>
+    </div>
+    <div class="diag-card">
+      <div class="diag-num">03</div>
+      <div class="diag-icon">📝</div>
+      <div class="diag-title">Actualidad activa pero sin convertir</div>
+      <div class="diag-text">19 páginas de artículos, publicaciones casi diarias — existe una operación de contenido real. Pero no hay captura de emails, no hay lead magnet, no hay CTA en los artículos. Todo ese tráfico entra y se va sin dejar rastro.</div>
+      <div class="diag-tag">Tráfico sin capturar</div>
+    </div>
+    <div class="diag-card">
+      <div class="diag-num">04</div>
+      <div class="diag-icon">✉️</div>
+      <div class="diag-title">Sin nurturing post-contacto</div>
+      <div class="diag-text">El único punto de captación es el formulario de contacto. No hay secuencia de emails, no hay CRM visible, no hay newsletter. El inversor que contacta y no cierra inmediatamente desaparece del radar — y el ciclo de decisión en inversión es de semanas o meses.</div>
+      <div class="diag-tag">Leads que se enfrían</div>
+    </div>
+    <div class="diag-card">
+      <div class="diag-num">05</div>
+      <div class="diag-icon">🎯</div>
+      <div class="diag-title">Sin atribución de conversiones</div>
+      <div class="diag-text">El CTA "Agenda tu cita" funciona, pero sin tracking configurado no se sabe de qué canal vienen los leads, cuál es el CPL real ni qué contenido convierte. Tomar decisiones de inversión en marketing sin datos es operar a ciegas.</div>
+      <div class="diag-tag">Sin datos de decisión</div>
+    </div>
+    <div class="diag-card">
+      <div class="diag-num">06</div>
+      <div class="diag-icon">🔗</div>
+      <div class="diag-title">UX técnica: enlaces con parámetros obsoletos</div>
+      <div class="diag-text">Los botones "Proyectos Activos" y "Proyectos Entregados" en portada enlazan con parámetros ?preview=true que redirigen a las URLs reales. Funciona, pero transmite descuido técnico y puede generar confusión en ciertos navegadores o bots de indexación.</div>
+      <div class="diag-tag">Quick fix</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTAS -->
+<section id="propuestas">
+  <div class="section-label">02 · Propuestas de Mejora</div>
+  <h2>Plan de acción por <em>área</em></h2>
+  <p class="section-intro">Cada propuesta va ordenada por impacto y velocidad de implementación. Empezamos por los quick wins que generan confianza inmediata.</p>
+
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="showTab('web', this)">🌐 Web & SEO</button>
+    <button class="tab-btn" onclick="showTab('sem', this)">💰 SEM & Paid Ads</button>
+    <button class="tab-btn" onclick="showTab('rrss', this)">📱 Redes Sociales</button>
+    <button class="tab-btn" onclick="showTab('email', this)">✉️ Email Marketing</button>
+  </div>
+
+  <!-- TAB: WEB -->
+  <div class="tab-content active" id="tab-web">
+    <div class="prop-grid">
+      <div class="prop-card">
+        <span class="badge badge-quick">Quick win · Semana 1</span>
+        <h3>Reparar CTA y desbloquear proyectos</h3>
+        <p>El impacto más inmediato con coste cero. Arreglar el CTA "Agenda tu cita" y publicar los proyectos en modo normal (no preview). Resultado: la web empieza a convertir.</p>
+        <ul class="prop-list">
+          <li>Configurar Calendly / Google Forms en el CTA principal</li>
+          <li>Publicar todas las páginas de proyectos y verificar en Search Console</li>
+          <li>Añadir datos estructurados (Schema.org RealEstateListing)</li>
+        </ul>
+      </div>
+      <div class="prop-card">
+        <span class="badge badge-quick">Quick win · Semana 2</span>
+        <h3>Portada con cifras y credibilidad</h3>
+        <p>Añadir en el hero: rentabilidades pasadas, número de proyectos gestionados, ADR y ocupación media. El inversor decide en los primeros 5 segundos.</p>
+        <ul class="prop-list">
+          <li>Bloque de KPIs: "11.6% rentabilidad bruta · 78% ocupación · 92€ ADR"</li>
+          <li>Disclaimer de riesgo en pie de sección (obligatorio legal)</li>
+          <li>Logos de medios si existen referencias de prensa</li>
+        </ul>
+      </div>
+      <div class="prop-card">
+        <span class="badge badge-mid">Mes 1-2</span>
+        <h3>Versión EN del site</h3>
+        <p>Implementar subdominio en.hestiainmuebles.com con contenido traducido por hablante nativo. Los proyectos llave en mano con tickets 1M+ requieren inglés.</p>
+        <ul class="prop-list">
+          <li>Plugin WPML o Polylang en WordPress</li>
+          <li>Traducción profesional del home y páginas de proyectos</li>
+          <li>Hreflang tags para SEO internacional</li>
+          <li>CTA adaptado: "Schedule a call" → Calendly en inglés</li>
+        </ul>
+      </div>
+      <div class="prop-card">
+        <span class="badge badge-mid">Mes 1-2</span>
+        <h3>Hub de contenido: "Guía del Inversor"</h3>
+        <p>Sección editorial con artículos de thought leadership: fiscalidad VUT Sevilla, rentabilidades por zona, análisis de mercado. Lead magnet para captura de emails.</p>
+        <ul class="prop-list">
+          <li>4 artículos SEO mensuales con keywords de inversión</li>
+          <li>Guía descargable "Cómo invertir en apartamentos turísticos en Sevilla"</li>
+          <li>Formulario de descarga → entrada al CRM</li>
+        </ul>
+        <div class="prop-impact">
+          <div class="prop-impact-item"><div class="val">+40%</div><div class="lbl">Tráfico orgánico estimado en 90d</div></div>
+          <div class="prop-impact-item"><div class="val">x3</div><div class="lbl">Tiempo en sitio</div></div>
+        </div>
+      </div>
+      <div class="prop-card full">
+        <span class="badge badge-strategic">Estratégico · Mes 2-3</span>
+        <h3>Área privada de inversor</h3>
+        <p>Zona de acceso con registro donde el inversor ve: proyectos en exclusiva, informes de rentabilidad previos, pipeline de operaciones. Diferenciador frente a competidores. Consolida la relación pre-venta y reduce el ciclo de decisión.</p>
+        <ul class="prop-list">
+          <li>Acceso por formulario + email de bienvenida automatizado</li>
+          <li>Dossiers descargables en PDF por proyecto (como "Adolfo Suárez")</li>
+          <li>Calculadora de rentabilidad interactiva</li>
+          <li>Webinar mensual para miembros: "El mercado turístico en Sevilla este mes"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: SEM -->
+  <div class="tab-content" id="tab-sem">
+    <div class="prop-grid">
+      <div class="prop-card full">
+        <span class="badge badge-quick">Google Ads · Mes 1</span>
+        <h3>Estrategia SEM: captar al inversor en el momento de búsqueda</h3>
+        <p>El inversor que busca activamente es el lead más calificado. Presencia en las keywords de alta intención comercial con landing pages optimizadas para conversión.</p>
+      </div>
+    </div>
+
+    <table class="sem-table" style="margin-bottom: 32px;">
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th>Intención</th>
+          <th>Volumen est.</th>
+          <th>CPC est.</th>
+          <th>Campaña</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>invertir en apartamentos turísticos Sevilla</td>
+          <td><span class="intent-badge intent-high">Alta</span></td>
+          <td><div class="vol-bar" style="width:85%"></div></td>
+          <td>€4.20</td>
+          <td>Search · Inversión</td>
+        </tr>
+        <tr>
+          <td>comprar apartamento turístico rentable Sevilla</td>
+          <td><span class="intent-badge intent-high">Alta</span></td>
+          <td><div class="vol-bar" style="width:70%"></div></td>
+          <td>€3.80</td>
+          <td>Search · Inversión</td>
+        </tr>
+        <tr>
+          <td>inversión inmobiliaria turística Sevilla rentabilidad</td>
+          <td><span class="intent-badge intent-high">Alta</span></td>
+          <td><div class="vol-bar" style="width:60%"></div></td>
+          <td>€5.10</td>
+          <td>Search · Inversión</td>
+        </tr>
+        <tr>
+          <td>gestión apartamentos turísticos Sevilla</td>
+          <td><span class="intent-badge intent-mid">Media</span></td>
+          <td><div class="vol-bar" style="width:90%"></div></td>
+          <td>€2.40</td>
+          <td>Search · Gestión</td>
+        </tr>
+        <tr>
+          <td>rentabilidad vivienda turística Sevilla 2026</td>
+          <td><span class="intent-badge intent-mid">Media</span></td>
+          <td><div class="vol-bar" style="width:45%"></div></td>
+          <td>€1.90</td>
+          <td>Search · Contenido</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="prop-grid">
+      <div class="prop-card">
+        <span class="badge badge-mid">Meta Ads</span>
+        <h3>Alcance y remarketing en redes</h3>
+        <p>Meta Ads para awareness en perfiles de alto poder adquisitivo en Andalucía y mercados emisores (Madrid, País Vasco, Cataluña, UK, Alemania).</p>
+        <ul class="prop-list">
+          <li>Segmentación por intereses: inversión, real estate, finanzas personales</li>
+          <li>Remarketing a visitantes web que no convirtieron</li>
+          <li>Vídeo corto (15s) con cifras de rentabilidad como activo creativo</li>
+          <li>Lead Ads con formulario nativo en plataforma</li>
+        </ul>
+      </div>
+      <div class="prop-card">
+        <span class="badge badge-strategic">LinkedIn Ads</span>
+        <h3>Inversor profesional y corporativo</h3>
+        <p>Para tickets >1M€, el decisor es un directivo, family office o gestor patrimonial. LinkedIn permite llegar a él con precisión quirúrgica.</p>
+        <ul class="prop-list">
+          <li>Segmentación por cargo: Director Financiero, CEO, Private Banking</li>
+          <li>Sponsored Content con dossier ejecutivo como lead magnet</li>
+          <li>InMail personalizado a perfiles de alto valor</li>
+          <li>Presupuesto recomendado: 500-800€/mes inicialmente</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: RRSS -->
+  <div class="tab-content" id="tab-rrss">
+    <div class="pillars-grid" style="margin-bottom: 48px;">
+      <div class="pillar">
+        <div class="pillar-icon">📈</div>
+        <h4>Pilar 1 · Rentabilidad</h4>
+        <p>Datos, cifras y track record. La prueba de que el modelo funciona. El contenido más poderoso para el inversor racional.</p>
+        <div class="pillar-formats">
+          <span class="fmt-tag">Infografías</span>
+          <span class="fmt-tag">Carruseles datos</span>
+          <span class="fmt-tag">Before/After inversión</span>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🏛️</div>
+        <h4>Pilar 2 · Sevilla Premium</h4>
+        <p>La ciudad como argumento inversor. Turismo, demanda, ubicaciones prime. Por qué Sevilla y por qué ahora.</p>
+        <div class="pillar-formats">
+          <span class="fmt-tag">Fotos de activos</span>
+          <span class="fmt-tag">Datos de mercado</span>
+          <span class="fmt-tag">Reels de zonas</span>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🤝</div>
+        <h4>Pilar 3 · Confianza</h4>
+        <p>Quiénes somos, cómo trabajamos, testimonios de inversores satisfechos. La humanización de la marca premium.</p>
+        <div class="pillar-formats">
+          <span class="fmt-tag">Testimonios</span>
+          <span class="fmt-tag">Behind the scenes</span>
+          <span class="fmt-tag">Founders en cámara</span>
+        </div>
+      </div>
+    </div>
+    <div class="prop-grid">
+      <div class="prop-card">
+        <span class="badge badge-quick">Instagram · 3 posts/sem</span>
+        <h3>Calendario editorial con cadencia fija</h3>
+        <ul class="prop-list">
+          <li>Lunes: Dato de mercado / cifra de rentabilidad (carrusel)</li>
+          <li>Miércoles: Activo o zona premium de Sevilla (foto editorial)</li>
+          <li>Viernes: Contenido de confianza / proceso de inversión</li>
+          <li>Stories diarias: precio del día, ocupación del mes, DM abierto</li>
+        </ul>
+      </div>
+      <div class="prop-card">
+        <span class="badge badge-mid">LinkedIn · 2 posts/sem</span>
+        <h3>Thought leadership para inversor profesional</h3>
+        <ul class="prop-list">
+          <li>Análisis de mercado turístico Sevilla (mensual)</li>
+          <li>Comparativa rentabilidad: VUT vs bolsa vs bono</li>
+          <li>José Aycart y Juan José Laguna como voces expertas</li>
+          <li>Newsletter semanal "Inversor Hestia" desde LinkedIn</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: EMAIL -->
+  <div class="tab-content" id="tab-email">
+    <div class="prop-card full" style="margin-bottom: 32px;">
+      <span class="badge badge-strategic">Infraestructura · Mes 1</span>
+      <h3>Funnel de nurturing completo</h3>
+      <p>El lead que no convierte hoy puede convertir en 3 meses — si lo cultivamos. Implementar una secuencia automatizada que mantiene a Hestia en top of mind del inversor durante todo su ciclo de decisión.</p>
+    </div>
+
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-num">1</div>
+        <div class="funnel-content">
+          <h4>Captación del lead</h4>
+          <p>Lead magnet: "Guía de inversión en VUT en Sevilla 2026" — descarga desde web o RRSS. Formulario con nombre, email y capital disponible.</p>
+        </div>
+        <div class="funnel-tag">Día 0</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">2</div>
+        <div class="funnel-content">
+          <h4>Email de bienvenida</h4>
+          <p>Guía adjunta + presentación de José Aycart y Juan José Laguna. Tono personal, no comercial. "Hola, soy José. Esta guía resume todo lo que hemos aprendido gestando más de X activos."</p>
+        </div>
+        <div class="funnel-tag">Día 1</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">3</div>
+        <div class="funnel-content">
+          <h4>Secuencia de educación (3 emails)</h4>
+          <p>Email 1: Por qué Sevilla es el mercado. Email 2: Cómo funciona la gestión llave en mano. Email 3: El caso real "Adolfo Suárez" con cifras reales.</p>
+        </div>
+        <div class="funnel-tag">Días 3, 7, 12</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">4</div>
+        <div class="funnel-content">
+          <h4>Email de conversión</h4>
+          <p>"¿Tienes capital disponible para invertir este año?" CTA directo a Calendly. Si no convierte: entra en ciclo mensual de newsletter.</p>
+        </div>
+        <div class="funnel-tag">Día 18</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">5</div>
+        <div class="funnel-content">
+          <h4>Newsletter mensual</h4>
+          <p>Informe de mercado, nuevos activos disponibles, resultados del mes en curso. Mantiene el lead caliente hasta que esté listo para tomar la decisión.</p>
+        </div>
+        <div class="funnel-tag">Recurrente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPTACIÓN -->
+<section id="captacion">
+  <div class="section-label">03 · Captación</div>
+  <h2>Ecosistema de generación de <em>leads cualificados</em></h2>
+  <p class="section-intro">No basta con atraer tráfico. Cada canal debe tener su objetivo, su métrica y su mecanismo de conversión claro.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px;">
+    <div class="kpi-card" style="border-top: 2px solid #4ade80;">
+      <div style="font-size: 28px; margin-bottom: 12px;">🌐</div>
+      <div style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 8px;">SEO Orgánico</div>
+      <div style="font-size: 13px; color: var(--grey); line-height: 1.7;">Keywords de inversión inmobiliaria turística. Contenido editorial mensual. Resultado en 3-6 meses.</div>
+      <div style="margin-top: 16px; font-size: 12px; color: #4ade80; font-weight: 600;">Coste: solo tiempo · Efecto acumulativo</div>
+    </div>
+    <div class="kpi-card" style="border-top: 2px solid #fbbf24;">
+      <div style="font-size: 28px; margin-bottom: 12px;">💰</div>
+      <div style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 8px;">Google Ads SEM</div>
+      <div style="font-size: 13px; color: var(--grey); line-height: 1.7;">Captar al inversor en el momento de búsqueda activa. CPL estimado: 40-80€ en nicho inversión.</div>
+      <div style="margin-top: 16px; font-size: 12px; color: #fbbf24; font-weight: 600;">Budget inicial: 800-1.500€/mes</div>
+    </div>
+    <div class="kpi-card" style="border-top: 2px solid #c084fc;">
+      <div style="font-size: 28px; margin-bottom: 12px;">📘</div>
+      <div style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 8px;">Meta Ads</div>
+      <div style="font-size: 13px; color: var(--grey); line-height: 1.7;">Awareness y remarketing. Perfiles de alto poder adquisitivo. Video corto con cifras de rentabilidad.</div>
+      <div style="margin-top: 16px; font-size: 12px; color: #c084fc; font-weight: 600;">Budget inicial: 400-700€/mes</div>
+    </div>
+    <div class="kpi-card" style="border-top: 2px solid #38bdf8;">
+      <div style="font-size: 28px; margin-bottom: 12px;">💼</div>
+      <div style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 8px;">LinkedIn Orgánico + Ads</div>
+      <div style="font-size: 13px; color: var(--grey); line-height: 1.7;">Inversor profesional y corporativo. Directivos, family offices. El canal premium por excelencia.</div>
+      <div style="margin-top: 16px; font-size: 12px; color: #38bdf8; font-weight: 600;">Budget ads: 500-800€/mes</div>
+    </div>
+    <div class="kpi-card" style="border-top: 2px solid var(--red);">
+      <div style="font-size: 28px; margin-bottom: 12px;">✉️</div>
+      <div style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 8px;">Email Nurturing</div>
+      <div style="font-size: 13px; color: var(--grey); line-height: 1.7;">Secuencia automatizada post-captación. Newsletter mensual. El canal más rentable a medio plazo.</div>
+      <div style="margin-top: 16px; font-size: 12px; color: var(--red); font-weight: 600;">ROI más alto del ecosistema</div>
+    </div>
+    <div class="kpi-card" style="border-top: 2px solid #fb923c;">
+      <div style="font-size: 28px; margin-bottom: 12px;">🤝</div>
+      <div style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 8px;">Red de referidos</div>
+      <div style="font-size: 13px; color: var(--grey); line-height: 1.7;">Gestores patrimoniales, asesores fiscales, abogados especializados. Programa de comisiones por introducción.</div>
+      <div style="margin-top: 16px; font-size: 12px; color: #fb923c; font-weight: 600;">Leads de muy alta calidad</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN 90 DÍAS -->
+<section id="plan90">
+  <div class="section-label">04 · Hoja de Ruta</div>
+  <h2>Plan de acción a <em>90 días</em></h2>
+  <p class="section-intro">Tres fases con objetivos claros. Cada semana tiene entregables concretos. Sin ambigüedad.</p>
+
+  <div class="timeline">
+    <div class="phase">
+      <div class="phase-dot"></div>
+      <div class="phase-header">
+        <div class="phase-tag">Fase 1</div>
+        <div class="phase-title">Foundations — Reparar lo urgente</div>
+        <div class="phase-weeks">Semanas 1–4</div>
+      </div>
+      <div class="phase-items">
+        <div class="phase-item">
+          <div class="phase-item-icon">🔧</div>
+          <div>
+            <h5>CTA + Publicación proyectos</h5>
+            <p>Calendly activo, proyectos visibles en Google, URLs canónicas</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-icon">📊</div>
+          <div>
+            <h5>Portada con track record</h5>
+            <p>Cifras de rentabilidad, bloque de KPIs, disclaimer legal</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-icon">📐</div>
+          <div>
+            <h5>Auditoría SEO completa</h5>
+            <p>Search Console, Core Web Vitals, keyword map</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-icon">📱</div>
+          <div>
+            <h5>Pilares RRSS activos</h5>
+            <p>Calendario editorial mes 1, 12 posts programados</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-dot"></div>
+      <div class="phase-header">
+        <div class="phase-tag">Fase 2</div>
+        <div class="phase-title">Growth — Activar canales de captación</div>
+        <div class="phase-weeks">Semanas 5–8</div>
+      </div>
+      <div class="phase-items">
+        <div class="phase-item">
+          <div class="phase-item-icon">🌍</div>
+          <div>
+            <h5>Versión EN en producción</h5>
+            <p>Home y proyectos traducidos, hreflang configurado</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-icon">💰</div>
+          <div>
+            <h5>Google Ads lanzado</h5>
+            <p>Campaña search con 5 grupos de anuncios, landing dedicada</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-icon">✉️</div>
+          <div>
+            <h5>Email nurture activo</h5>
+            <p>Secuencia de 5 emails configurada en Mailchimp / HubSpot</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-icon">📝</div>
+          <div>
+            <h5>Hub editorial: 2 artículos</h5>
+            <p>Primeros posts SEO publicados, lead magnet operativo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-dot"></div>
+      <div class="phase-header">
+        <div class="phase-tag">Fase 3</div>
+        <div class="phase-title">Scale — Optimizar y consolidar</div>
+        <div class="phase-weeks">Semanas 9–12</div>
+      </div>
+      <div class="phase-items">
+        <div class="phase-item">
+          <div class="phase-item-icon">📈</div>
+          <div>
+            <h5>Área de inversor (beta)</h5>
+            <p>Acceso privado con dossiers, calculadora de rentabilidad</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-icon">💼</div>
+          <div>
+            <h5>LinkedIn Ads activo</h5>
+            <p>Campaña para directivos y profesionales de finanzas</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-icon">🔄</div>
+          <div>
+            <h5>Optimización de campañas</h5>
+            <p>A/B tests en ads, mejora de CPL, ajuste de audiencias</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-icon">📋</div>
+          <div>
+            <h5>Informe de resultados</h5>
+            <p>Dashboard de KPIs, presentación a fundadores, próximos pasos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KPIS -->
+<section id="kpis">
+  <div class="section-label">05 · Métricas de Éxito</div>
+  <h2>KPIs a los <em>90 días</em></h2>
+  <p class="section-intro">Si no se puede medir, no se puede mejorar. Estos son los indicadores concretos que definen el éxito del plan.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-num">+<span>40</span>%</div>
+      <div class="kpi-label">Tráfico orgánico</div>
+      <div class="kpi-sub">Baseline vs. mes 3 en Google Analytics</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num"><span>20</span>+</div>
+      <div class="kpi-label">Leads/mes cualificados</div>
+      <div class="kpi-sub">Con capital declarado y voluntad de reunión</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num"><span>&lt;60</span>€</div>
+      <div class="kpi-label">CPL en Google Ads</div>
+      <div class="kpi-sub">Coste por lead en nicho inversión inmobiliaria</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num"><span>35</span>%</div>
+      <div class="kpi-label">Open rate email</div>
+      <div class="kpi-sub">Secuencia de nurturing (sector media: 21%)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num"><span>3</span>×</div>
+      <div class="kpi-label">Citas agendadas/mes</div>
+      <div class="kpi-sub">Comparado con el estado actual (CTA roto = 0)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num"><span>500</span>+</div>
+      <div class="kpi-label">Seguidores LinkedIn</div>
+      <div class="kpi-sub">Perfil empresa activo con contenido editorial</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="section-label" style="justify-content: center;">06 · Propuesta</div>
+  <h2>El plan ya existe.<br><em>Falta ejecutarlo.</em></h2>
+  <p>Este documento representa el trabajo de diagnóstico que haría en la primera semana. Con el apoyo del equipo de Hestia, lo conviero en resultados medibles en 90 días.</p>
+
+  <div class="author-block">
+    <p style="margin-bottom: 4px; font-size: 16px;"><strong>Carlos Cardoso</strong></p>
+    <p>Candidato · Técnico/a de Marketing · Hestia Inversión Patrimonial</p>
+    <p style="margin-top: 16px; font-size: 12px; color: var(--grey2);">
+      Documento preparado para la entrevista. Las estimaciones de KPIs son proyecciones basadas en benchmarks del sector inmobiliario y turístico.<br>
+      Las rentabilidades mencionadas de proyectos previos son datos reales de Hestia (Dossier Adolfo Suárez). Invertir conlleva riesgo de pérdida de capital.
+    </p>
+  </div>
+</div>
+
+<script>
+// TABS
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// FLOATING NAV
+const sections = ['hero','diagnostico','propuestas','captacion','plan90','kpis'];
+const dots = document.querySelectorAll('.fnav-dot');
+
+function updateDots() {
+  let current = 'hero';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 200) current = id;
+  });
+  dots.forEach(d => {
+    d.classList.toggle('active', d.dataset.target === current);
+  });
+}
+
+dots.forEach(d => {
+  d.addEventListener('click', () => {
+    const el = document.getElementById(d.dataset.target);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+window.addEventListener('scroll', updateDots, { passive: true });
+
+// COUNTER ANIMATION
+function animateCounters() {
+  document.querySelectorAll('.kpi-num').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'all 0.5s ease';
+  });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.kpi-num').forEach((el, i) => {
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, i * 80);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+
+const kpiSection = document.getElementById('kpis');
+if (kpiSection) {
+  animateCounters();
+  observer.observe(kpiSection);
+}
+</script>
+</body>
+</html>
